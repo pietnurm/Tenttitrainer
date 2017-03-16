@@ -8,7 +8,7 @@ Opiskelija (käyttäjä)
 - luo kategoria
 - luo alakategoria
 - luo kysymys ja mallivastaus kategoriaan
-* mahdollisuus valita halutessaan alakategoria
+  - mahdollisuus valita halutessaan alakategoria
 2. Harjoittelu
 
 3. Tulosten tarkastelu
