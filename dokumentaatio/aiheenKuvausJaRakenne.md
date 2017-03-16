@@ -9,7 +9,22 @@ Opiskelija (käyttäjä)
 - luo alakategoria
 - luo kysymys ja mallivastaus kategoriaan
   - mahdollisuus valita halutessaan alakategoria
+- muokkaa kategorian/alakategorian nimeä
+- poista kategoria/alakategoria kaikkine kysymyksineen
+- muokkaa kysymystä/mallivastausta
+- poista kysymys
 2. Harjoittelu
-
+- testaa kategoriaa
+  - onnistuu, jos kategoriassa vähintään 1 kysymys
+  - **alatoiminnot:** vastaa kysymykseen, pisteytä vastaus
+- testaa valittuja alakategorioita
+  - onnistuu, jos valituissa alakategorioissa vähintään 1 kysymys
+  - **alatoiminnot:** vastaa kysymykseen, pisteytä vastaus
+- lopeta testi
+  - ilman komentoa testi jatkuu niin kauan kuin kysymyksiä riittää
 3. Tulosten tarkastelu
+- selaa keskiarvoja
+  - kategorian, alakategorian tai yksittäisen kysymyksen perusteella
+  - näyttää samalla, montako kysymystä kategoria sisältää ja montako kertaa yksittäiseen kysymymykseen on vastattu
+- nollaa kategorian/alakategorian ja kaikkien sen kysymysten laskurit
 
