@@ -4,7 +4,7 @@ Luodaan opiskelua tukeva harjoittelusovellus, jonka avulla käyttäjä voi tentt
 ## Käyttäjät
 Opiskelija (käyttäjä)
 ## Käyttäjän toiminnot
-1. Muokkaus
+###### 1. Muokkaus
 - luo kategoria
 - luo alakategoria
 - luo kysymys ja mallivastaus kategoriaan
@@ -13,7 +13,7 @@ Opiskelija (käyttäjä)
 - poista kategoria/alakategoria kaikkine kysymyksineen
 - muokkaa kysymystä/mallivastausta
 - poista kysymys
-2. Harjoittelu
+###### 2. Harjoittelu
 - testaa kategoriaa
   - onnistuu, jos kategoriassa vähintään 1 kysymys
   - **alatoiminnot:** vastaa kysymykseen, pisteytä vastaus
@@ -22,7 +22,7 @@ Opiskelija (käyttäjä)
   - **alatoiminnot:** vastaa kysymykseen, pisteytä vastaus
 - lopeta testi
   - ilman komentoa testi jatkuu niin kauan kuin kysymyksiä riittää
-3. Tulosten tarkastelu
+###### 3. Tulosten tarkastelu
 - selaa keskiarvoja
   - kategorian, alakategorian tai yksittäisen kysymyksen perusteella
   - näyttää samalla, montako kysymystä kategoria sisältää ja montako kertaa yksittäiseen kysymymykseen on vastattu
