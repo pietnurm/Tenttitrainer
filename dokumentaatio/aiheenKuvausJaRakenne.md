@@ -28,4 +28,4 @@ Opiskelija (käyttäjä)
   - näyttää samalla, montako kysymystä kategoria sisältää ja montako kertaa yksittäiseen kysymymykseen on vastattu
 - nollaa kategorian/alakategorian ja kaikkien sen kysymysten laskurit
 
-![Alt text](/Tenttitrainer luokkakaavio1.png "Alustava luokkakaavio")
+![Alt text](https://helsinkifi-my.sharepoint.com/personal/pietnurm_ad_helsinki_fi/_layouts/15/guestaccess.aspx?docid=1c7808b718e184256b818aeb18473ca4b&authkey=AXZ3yxbUUW5s-kq52KRzFR4 "Alustava luokkakaavio")
