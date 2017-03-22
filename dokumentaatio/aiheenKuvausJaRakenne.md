@@ -28,3 +28,4 @@ Opiskelija (käyttäjä)
   - näyttää samalla, montako kysymystä kategoria sisältää ja montako kertaa yksittäiseen kysymymykseen on vastattu
 - nollaa kategorian/alakategorian ja kaikkien sen kysymysten laskurit
 
+![Alt text](/Tenttitrainer luokkakaavio1.png "Alustava luokkakaavio")
