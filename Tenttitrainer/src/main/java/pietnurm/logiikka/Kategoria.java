@@ -6,6 +6,7 @@
 package pietnurm.logiikka;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,6 +19,8 @@ public class Kategoria {
     
     public Kategoria(String nimi) {
         this.nimi = nimi;
+        this.kysymykset = new ArrayList();
+        this.alakategoriat = new ArrayList();
     }
     public void lisaaKysymys(Kysymys kysymys) {
         kysymykset.add(kysymys);

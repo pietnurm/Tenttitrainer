@@ -49,11 +49,16 @@ public class KysymysTest {
     @Test
     public void kysymyksenMuokkaaminenToimii() {
         kysymys.muokkaaKysymysta("Uusi kysymys");
-        assertEquals("Uusi kysymys", kysymys.toString());
+        assertEquals("Uusi kysymys", kysymys.haeKysymys());
     }
     @Test
     public void mallivastauksenMuokkaaminenToimii() {
-        kysymys.muokkaaKysymysta("Uusi mallivastaus");
-        assertEquals("Uusi mallivastaus", kysymys.toString());
+        kysymys.muokkaaMallivastausta("Uusi mallivastaus");
+        assertEquals("Uusi mallivastaus", kysymys.haeMallivastaus());
+    }
+    @Test
+    public void alakategoriaToimii() {
+        kysymys.annaAlakategoria("aihe1");
+        assertEquals("aihe1", kysymys.haeAlakategoria());
     }
 }
