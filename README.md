@@ -1,3 +1,6 @@
 # README
-## Tiivistelm‰ aihekuvauksesta
-Tenttitrainer on opiskelua tukeva harjoittelusovellus, jonka avulla k‰ytt‰j‰ voi tentti‰ itselt‰‰n luomiaan kysymyksi‰ haluamistaan aihepiireist‰. Kysymyksi‰ voi jaotella kategorioihin (esim. kurssi) ja alakategorioihin (yksitt‰inen aihepiiri). Ohjelma tenttii k‰ytt‰j‰lt‰ satunnaisessa j‰rjestyksess‰ kysymyksi‰ t‰m‰n valitsemista kategorioista ja k‰ytt‰j‰ arvostelee vastauksensa mallivastauksen avulla asteikolla 1-5. Ohjelma tallentaa k‰ytt‰j‰n pisteet teht‰v‰kohtaisesti ja laskee keskiarvot eri kategorioille.
+## Tiivistelm√§ aihekuvauksesta
+Tenttitrainer on opiskelua tukeva harjoittelusovellus, jonka avulla k√§ytt√§j√§ voi tentti√§ itselt√§√§n luomiaan kysymyksi√§ haluamistaan aihepiireist√§. Kysymyksi√§ voi jaotella kategorioihin (esim. kurssi) ja alakategorioihin (yksitt√§inen aihepiiri). Ohjelma tenttii k√§ytt√§j√§lt√§ satunnaisessa j√§rjestyksess√§ kysymyksi√§ t√§m√§n valitsemista kategorioista ja k√§ytt√§j√§ arvostelee vastauksensa mallivastauksen avulla asteikolla 1-5. Ohjelma tallentaa k√§ytt√§j√§n pisteet teht√§v√§kohtaisesti ja laskee keskiarvot eri kategorioille.
+## Dokumentaatio
+[aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+[tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
