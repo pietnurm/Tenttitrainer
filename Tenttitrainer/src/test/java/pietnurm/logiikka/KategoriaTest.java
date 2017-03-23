@@ -73,19 +73,26 @@ public class KategoriaTest {
         kategoria.poistaKysymys(kysymys1);
         assertEquals(lista, kategoria.palautaKysymykset());
     }
-//    @Test
-//    public void alakategorioidenLuominenJaListaaminenToimii() {
-//        ArrayList<Alakategoria> lista = new ArrayList();
-//        lista.add(new Alakategoria("alakategoria1"));
-////        lista.add(new Alakategoria("alakategoria2"));
-//        kategoria.luoAlakategoria("alakategoria1");
-////        kategoria.luoAlakategoria("alakategoria2");
-//        assertEquals(lista.toString(), kategoria.palautaAlakategoriat().toString());
-//    }
+    @Test
+    public void alakategorioidenLuominenJaPalauttaminenToimii() {
+        ArrayList<String> lista = new ArrayList();
+        lista.add("alakategoria1");
+        lista.add("alakategoria2");
+        kategoria.luoAlakategoria("alakategoria1");
+        kategoria.luoAlakategoria("alakategoria2");
+        ArrayList<String> alakategorioidenNimet = new ArrayList();
+        for (int i = 0; i < kategoria.palautaAlakategoriat().size(); i++) {
+            alakategorioidenNimet.add(kategoria.palautaAlakategoriat().get(i).palautaNimi());
+        }
+        assertEquals(lista, alakategorioidenNimet);
+    }
     @Test
     public void alakategorianKysymystenPalauttaminenToimii() {
         ArrayList<Kysymys> lista = new ArrayList();
-        lista.gsrdhf
+        lista.add(kysymys1);
+        lista.add(kysymys2);
+        kategoria.lisaaKysymys(kysymys1);
+        kategoria.lisaaKysymys(kysymys2);
         kysymys1.annaAlakategoria("alakategoria1");
         kysymys2.annaAlakategoria("alakategoria1");
         assertEquals(lista, kategoria.palautaAlakategorianKysymykset("alakategoria1"));

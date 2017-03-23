@@ -29,10 +29,21 @@ public class Main {
         Kategoria kategoria = new Kategoria("kurssi1");
         kategoria.lisaaKysymys(kysymys3);
         kategoria.lisaaKysymys(kysymys2);
-        ArrayList<Kysymys> lista = kategoria.palautaKysymykset();
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println(lista.get(i).haeKysymys());
+        
+//        ArrayList<Kysymys> lista = kategoria.palautaKysymykset();
+//        for (int i = 0; i < lista.size(); i++) {
+//            System.out.println(lista.get(i).haeKysymys());
+//        
+//        kysymys1.annaAlakategoria("alakategoria1");
+//        kysymys2.annaAlakategoria("alakategoria1");
+//        
+//        }
+        
+        kategoria.luoAlakategoria("alakategoooria"); 
+        for (int i = 0; i < kategoria.palautaAlakategoriat().size(); i++) {
+            System.out.println(kategoria.palautaAlakategoriat().get(i).palautaNimi());
         }
+        
         
     }
     
