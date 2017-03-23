@@ -36,8 +36,8 @@ public class Kategoria {
         return this.kysymykset;
     }
     public void luoAlakategoria(String nimi) {
-        Alakategoria alakategoria = new Alakategoria(nimi);
-        alakategoriat.add(alakategoria);
+       // Alakategoria alakategoria = new Alakategoria(nimi);
+        alakategoriat.add(new Alakategoria(nimi));
     }
     public ArrayList<Alakategoria> palautaAlakategoriat() {
         return this.alakategoriat;

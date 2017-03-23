@@ -19,6 +19,12 @@ public class Alakategoria {
         this.nimi = nimi;
 //        this.ylakategoria = ylakategoria;
     }
+    public void muokkaaNimea(String uusiNimi) {
+        this.nimi = uusiNimi;
+    }
+    public String palautaNimi() {
+        return this.nimi;
+    }
     public void lisaaKysymys(Kysymys kysymys) {
         kysymys.annaAlakategoria(nimi);
     }
