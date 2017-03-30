@@ -6,4 +6,4 @@ Tenttitrainer on opiskelua tukeva harjoittelusovellus, jonka avulla käyttäjä 
 ;
 [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 ;
-[pit-raportti](https://htmlpreview.github.io/https://github.com/pietnurm/Tenttitrainer/blob/master/dokumentaatio/pit/201703302044/index.html)
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/pietnurm/Tenttitrainer/blob/master/dokumentaatio/pit/201703302044/index.html)
