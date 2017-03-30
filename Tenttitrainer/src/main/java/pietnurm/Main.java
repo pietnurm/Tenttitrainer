@@ -6,6 +6,7 @@
 package pietnurm;
 
 import java.util.ArrayList;
+import pietnurm.logiikka.Alakategoria;
 import pietnurm.logiikka.Kategoria;
 import pietnurm.logiikka.Kysymys;
 
@@ -30,6 +31,8 @@ public class Main {
         kategoria.lisaaKysymys(kysymys3);
         kategoria.lisaaKysymys(kysymys2);
         
+        Alakategoria alakategoria = new Alakategoria("alakategoria1");
+        
 //        ArrayList<Kysymys> lista = kategoria.palautaKysymykset();
 //        for (int i = 0; i < lista.size(); i++) {
 //            System.out.println(lista.get(i).haeKysymys());
@@ -43,6 +46,9 @@ public class Main {
         for (int i = 0; i < kategoria.palautaAlakategoriat().size(); i++) {
             System.out.println(kategoria.palautaAlakategoriat().get(i).palautaNimi());
         }
+        Testi testi = new Testi();
+        Testi testi2 = new Testi(kategoria);
+        Testi testi3 = new Testi(kategoria, alakategoria);
         
         
     }
