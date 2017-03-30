@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import pietnurm.logiikka.Alakategoria;
 import pietnurm.logiikka.Kategoria;
 import pietnurm.logiikka.Kysymys;
+import pietnurm.logiikka.Testi;
 
 /**
  *
