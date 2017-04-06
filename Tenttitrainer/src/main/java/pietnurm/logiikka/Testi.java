@@ -15,16 +15,15 @@ import pietnurm.logiikka.Kategoria;
  * @author pieta
  */
 public class Testi {
-    
+    private Kysymysvarasto kysymysvarasto;
     private Kategoria kategoria;
     private ArrayList<Alakategoria> alakategoriat;
-//    private ArrayList<Kysymys> valitutKysymykset;
     
-    public Testi (Kategoria kategoria, ArrayList<Alakategoria> alakategoriat) {
+    public Testi (Kysymysvarasto kysymysvarasto, Kategoria kategoria, ArrayList<Alakategoria> alakategoriat) {
+        this.kysymysvarasto = kysymysvarasto;
         this.kategoria = kategoria;
         this.kategoria = kategoria;
-        this.alakategoriat = new ArrayList<Alakategoria>();
-//        this.valitutKysymykset = new ArrayList<Kysymys>();
+        this.alakategoriat = new ArrayList<>();
     } 
     public Testi (Kategoria kategoria) {
         this.kategoria = kategoria;
@@ -37,7 +36,8 @@ public class Testi {
     public void testaa() {
         if (this.kategoria == null && this.alakategoriat == null) {
             // testaa kaikkia kysymyksiä
-//            ArrayList<Kysymys> valitutKysymykset =
+            ArrayList<Kysymys> valitutKysymykset = kysymysvarasto.palautaKaikkiKysymykset();
+            esitaKysymykset(valitutKysymykset);
         }
         if (this.alakategoriat == null) {
             // testaa kaikkia kategorian kysymyksiä
@@ -46,7 +46,7 @@ public class Testi {
         }
         else {
             // testaa alakategorialistassa listattujen alakategorioiden kysymyksiä
-            ArrayList<Kysymys> valitutKysymykset = new ArrayList<Kysymys>();
+            ArrayList<Kysymys> valitutKysymykset = new ArrayList<>();
             for (int i = 0; i < this.alakategoriat.size(); i++) {
                 String alakategorianNimi = this.alakategoriat.get(i).palautaNimi();
                 for (int j = 0; j < kategoria.palautaAlakategorianKysymykset(alakategorianNimi).size(); j++) {

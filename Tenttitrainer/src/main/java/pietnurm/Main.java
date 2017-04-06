@@ -10,6 +10,7 @@ import pietnurm.logiikka.Alakategoria;
 import pietnurm.logiikka.Kategoria;
 import pietnurm.logiikka.Kysymys;
 import pietnurm.logiikka.Testi;
+import pietnurm.logiikka.Kysymysvarasto;
 
 /**
  *
@@ -21,6 +22,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Kysymysvarasto kysymysvarasto = new Kysymysvarasto();
+        
         Kysymys kysymys1 = new Kysymys("Kumpi voitti?", "No Kampi tietysti.");
         Kysymys kysymys2 = new Kysymys("Kumpi hävisi?", "No Kumpi tietysti.");
         Kysymys kysymys3 = new Kysymys("Ovatko esimerkkikysymykset tyhmiä?", "No ovathan ne.");
@@ -32,13 +35,19 @@ public class Main {
         kategoria.lisaaKysymys(kysymys3);
         kategoria.lisaaKysymys(kysymys2);
         
+        Kategoria kategoria2 = new Kategoria("kurssi2");
+        kategoria.lisaaKysymys(kysymys1);
+        
+        kysymysvarasto.lisaaKategoria(kategoria);
+        kysymysvarasto.lisaaKategoria(kategoria2);
+        
         Alakategoria alakategoria = new Alakategoria("alakategoria1");
         Alakategoria alakategoria2 = new Alakategoria("alakategoria2");
         
         alakategoria.lisaaKysymys(kysymys3);
         alakategoria.lisaaKysymys(kysymys2);
         
-        ArrayList<Alakategoria> alakategoriat = new ArrayList<Alakategoria>();
+        ArrayList<Alakategoria> alakategoriat = new ArrayList<>();
         alakategoriat.add(alakategoria);
 //        alakategoriat.add(alakategoria2);
         
@@ -57,13 +66,13 @@ public class Main {
         }
         Testi testi = new Testi();
         Testi testi2 = new Testi(kategoria);
-        Testi testi3 = new Testi(kategoria, alakategoriat);
+//        Testi testi3 = new Testi(kategoria, alakategoriat);
         
-        testi3.testaa();
+        testi.testaa();
         
-        for (int i = 0; i < kategoria.palautaAlakategorianKysymykset("alakategoria1").size(); i++) {
-            System.out.println(kategoria.palautaAlakategorianKysymykset("alakategoriat1").get(i));
-        }
+//        for (int i = 0; i < kategoria.palautaAlakategorianKysymykset("alakategoria1").size(); i++) {
+//            System.out.println(kategoria.palautaAlakategorianKysymykset("alakategoriat1").get(i));
+//        }
         
         
     }
