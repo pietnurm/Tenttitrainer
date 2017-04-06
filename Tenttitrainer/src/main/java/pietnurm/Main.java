@@ -33,6 +33,14 @@ public class Main {
         kategoria.lisaaKysymys(kysymys2);
         
         Alakategoria alakategoria = new Alakategoria("alakategoria1");
+        Alakategoria alakategoria2 = new Alakategoria("alakategoria2");
+        
+        alakategoria.lisaaKysymys(kysymys3);
+        alakategoria.lisaaKysymys(kysymys2);
+        
+        ArrayList<Alakategoria> alakategoriat = new ArrayList<Alakategoria>();
+        alakategoriat.add(alakategoria);
+//        alakategoriat.add(alakategoria2);
         
 //        ArrayList<Kysymys> lista = kategoria.palautaKysymykset();
 //        for (int i = 0; i < lista.size(); i++) {
@@ -49,7 +57,13 @@ public class Main {
         }
         Testi testi = new Testi();
         Testi testi2 = new Testi(kategoria);
-        Testi testi3 = new Testi(kategoria, alakategoria);
+        Testi testi3 = new Testi(kategoria, alakategoriat);
+        
+        testi3.testaa();
+        
+        for (int i = 0; i < kategoria.palautaAlakategorianKysymykset("alakategoria1").size(); i++) {
+            System.out.println(kategoria.palautaAlakategorianKysymykset("alakategoriat1").get(i));
+        }
         
         
     }

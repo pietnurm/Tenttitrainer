@@ -6,6 +6,7 @@
 package pietnurm.logiikka;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import pietnurm.logiikka.Alakategoria;
 import pietnurm.logiikka.Kategoria;
 
@@ -16,30 +17,49 @@ import pietnurm.logiikka.Kategoria;
 public class Testi {
     
     private Kategoria kategoria;
-    private ArrayList<Alakategoria> alakategoria;
+    private ArrayList<Alakategoria> alakategoriat;
+//    private ArrayList<Kysymys> valitutKysymykset;
     
-    public Testi (Kategoria kategoria, Alakategoria alakategoria) {
+    public Testi (Kategoria kategoria, ArrayList<Alakategoria> alakategoriat) {
         this.kategoria = kategoria;
         this.kategoria = kategoria;
-        this.alakategoria = new ArrayList<Alakategoria>();
+        this.alakategoriat = new ArrayList<Alakategoria>();
+//        this.valitutKysymykset = new ArrayList<Kysymys>();
     } 
     public Testi (Kategoria kategoria) {
         this.kategoria = kategoria;
-        this.alakategoria = null;
+        this.alakategoriat = null;
     }
     public Testi () {
         this.kategoria = null;
-        this.alakategoria = null;
+        this.alakategoriat = null;
     }
     public void testaa() {
-        if (this.kategoria == null && this.alakategoria == null) {
+        if (this.kategoria == null && this.alakategoriat == null) {
             // testaa kaikkia kysymyksiä
+//            ArrayList<Kysymys> valitutKysymykset =
         }
-        if (this.alakategoria == null) {
+        if (this.alakategoriat == null) {
             // testaa kaikkia kategorian kysymyksiä
+            ArrayList<Kysymys> valitutKysymykset = kategoria.palautaKysymykset();
+            esitaKysymykset(valitutKysymykset);
         }
         else {
             // testaa alakategorialistassa listattujen alakategorioiden kysymyksiä
+            ArrayList<Kysymys> valitutKysymykset = new ArrayList<Kysymys>();
+            for (int i = 0; i < this.alakategoriat.size(); i++) {
+                String alakategorianNimi = this.alakategoriat.get(i).palautaNimi();
+                for (int j = 0; j < kategoria.palautaAlakategorianKysymykset(alakategorianNimi).size(); j++) {
+                    valitutKysymykset.add(kategoria.palautaAlakategorianKysymykset(alakategorianNimi).get(j));
+                }
+            }
+            esitaKysymykset(valitutKysymykset);
+        }
+    }
+    public void esitaKysymykset(ArrayList<Kysymys> kysymyslista) {
+        Collections.shuffle(kysymyslista);
+        for (int i = 0; i < kysymyslista.size(); i++) {
+            System.out.println(kysymyslista.get(i).haeKysymys());
         }
     }
 }
