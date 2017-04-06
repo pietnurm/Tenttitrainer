@@ -25,23 +25,25 @@ public class Testi {
         this.kategoria = kategoria;
         this.alakategoriat = new ArrayList<>();
     } 
-    public Testi (Kategoria kategoria) {
+    public Testi (Kysymysvarasto kysymysvarasto, Kategoria kategoria) {
+        this.kysymysvarasto = kysymysvarasto;
         this.kategoria = kategoria;
         this.alakategoriat = null;
     }
-    public Testi () {
+    public Testi (Kysymysvarasto kysymysvarasto) {
+        this.kysymysvarasto = kysymysvarasto;
         this.kategoria = null;
         this.alakategoriat = null;
     }
     public void testaa() {
         if (this.kategoria == null && this.alakategoriat == null) {
             // testaa kaikkia kysymyksiä
-            ArrayList<Kysymys> valitutKysymykset = kysymysvarasto.palautaKaikkiKysymykset();
+            ArrayList<Kysymys> valitutKysymykset = this.kysymysvarasto.palautaKaikkiKysymykset();
             esitaKysymykset(valitutKysymykset);
         }
         if (this.alakategoriat == null) {
             // testaa kaikkia kategorian kysymyksiä
-            ArrayList<Kysymys> valitutKysymykset = kategoria.palautaKysymykset();
+            ArrayList<Kysymys> valitutKysymykset = this.kategoria.palautaKysymykset();
             esitaKysymykset(valitutKysymykset);
         }
         else {

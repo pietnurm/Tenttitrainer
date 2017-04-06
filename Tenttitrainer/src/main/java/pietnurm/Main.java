@@ -64,11 +64,20 @@ public class Main {
         for (int i = 0; i < kategoria.palautaAlakategoriat().size(); i++) {
             System.out.println(kategoria.palautaAlakategoriat().get(i).palautaNimi());
         }
-        Testi testi = new Testi();
-        Testi testi2 = new Testi(kategoria);
-//        Testi testi3 = new Testi(kategoria, alakategoriat);
+        Testi testi = new Testi(kysymysvarasto);
+        Testi testi2 = new Testi(kysymysvarasto, kategoria);
+        Testi testi3 = new Testi(kysymysvarasto, kategoria, alakategoriat);
         
-        testi.testaa();
+
+//        testi3.testaa();
+
+//        for (int i = 0; i < kysymysvarasto.palautaKategoriat().size(); i++) {
+//            System.out.println(kysymysvarasto.palautaKategoriat().get(i).palautaKategorianNimi());
+//        }
+//        for (int i = 0; i < kysymysvarasto.palautaKaikkiKysymykset().size(); i++) {
+//            System.out.println(kysymysvarasto.palautaKaikkiKysymykset().get(i).haeKysymys());
+//        }
+        
         
 //        for (int i = 0; i < kategoria.palautaAlakategorianKysymykset("alakategoria1").size(); i++) {
 //            System.out.println(kategoria.palautaAlakategorianKysymykset("alakategoriat1").get(i));

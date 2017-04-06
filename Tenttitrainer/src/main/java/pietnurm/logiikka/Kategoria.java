@@ -22,6 +22,11 @@ public class Kategoria {
         this.kysymykset = new ArrayList();
         this.alakategoriat = new ArrayList();
     }
+    
+    public String palautaKategorianNimi() {
+        return this.nimi;
+    }
+    
     public void lisaaKysymys(Kysymys kysymys) {
         kysymykset.add(kysymys);
     }
