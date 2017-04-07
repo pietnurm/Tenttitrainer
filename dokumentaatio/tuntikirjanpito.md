@@ -6,3 +6,4 @@ Päivä | Tunnit | Kuvaus
 22.03.2017 | 5h | Checkstyle, luokkakaavio, aihekuvaustiivistelmä, testejä
 23.03.2017 | 3.5h | Testit loppuun, pit- ja checkstyle-säätöä ym.
 30.03.2017 | 3,5h | Koodailua, testailua, säätöä
+06.04.2017 | 3,5h | Koodailua
