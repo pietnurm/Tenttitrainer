@@ -12,6 +12,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 /**
@@ -39,14 +41,40 @@ public class Kayttoliittyma implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(6, 2);
+        GridLayout layout = new GridLayout(1,1);
         container.setLayout(layout);
+        
+//        JLabel otsikko = new JLabel("TENTTITRAINER", SwingConstants.CENTER);
+//        otsikko.setFont(new Font("Rockwell", Font.PLAIN, 36));
+//        otsikko.setForeground(new Color(0xffffdd));
+        
+//        container.add(otsikko);
+        container.add(luoValikko());
+    }
+    private JPanel luoValikko() {
+        JPanel valikko = new JPanel(new GridLayout(5, 1));
         
         JLabel otsikko = new JLabel("TENTTITRAINER", SwingConstants.CENTER);
         otsikko.setFont(new Font("Rockwell", Font.PLAIN, 36));
-//        otsikko.setForeground(new Color(0xffffdd));
+        valikko.setBackground(new Color(0xffffff));
+        valikko.add(otsikko);
         
-        container.add(otsikko);
+        JButton luo = new JButton("Luo kysymyksiä");
+        luo.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        luo.setBackground(new Color(0xffffdd));
+        valikko.add(luo);
+        
+        JButton testaa = new JButton("Testaa itseäsi");
+        testaa.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        testaa.setBackground(new Color(0xffffff));
+        valikko.add(testaa);
+        
+        JButton tulokset = new JButton("Tulokset");
+        tulokset.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        tulokset.setBackground(new Color(0xffffdd));
+        valikko.add(tulokset);
+        
+        return valikko;
     }
 
     public JFrame getFrame() {
