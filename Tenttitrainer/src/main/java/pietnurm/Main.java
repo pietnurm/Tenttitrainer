@@ -46,10 +46,11 @@ public class Main {
         
         alakategoria.lisaaKysymys(kysymys3);
         alakategoria.lisaaKysymys(kysymys2);
+        alakategoria2.lisaaKysymys(kysymys1);
         
         ArrayList<Alakategoria> alakategoriat = new ArrayList<>();
         alakategoriat.add(alakategoria);
-//        alakategoriat.add(alakategoria2);
+        alakategoriat.add(alakategoria2);
         
 //        ArrayList<Kysymys> lista = kategoria.palautaKysymykset();
 //        for (int i = 0; i < lista.size(); i++) {
@@ -60,16 +61,16 @@ public class Main {
 //        
 //        }
         
-        kategoria.luoAlakategoria("alakategoooria"); 
-        for (int i = 0; i < kategoria.palautaAlakategoriat().size(); i++) {
-            System.out.println(kategoria.palautaAlakategoriat().get(i).palautaNimi());
-        }
+//        kategoria.luoAlakategoria("alakategoooria"); 
+//        for (int i = 0; i < kategoria.palautaAlakategoriat().size(); i++) {
+//            System.out.println(kategoria.palautaAlakategoriat().get(i).palautaNimi());
+//        }
         Testi testi = new Testi(kysymysvarasto);
         Testi testi2 = new Testi(kysymysvarasto, kategoria);
         Testi testi3 = new Testi(kysymysvarasto, kategoria, alakategoriat);
         
 
-//        testi3.testaa();
+//        testi.testaa();
 
 //        for (int i = 0; i < kysymysvarasto.palautaKategoriat().size(); i++) {
 //            System.out.println(kysymysvarasto.palautaKategoriat().get(i).palautaKategorianNimi());
