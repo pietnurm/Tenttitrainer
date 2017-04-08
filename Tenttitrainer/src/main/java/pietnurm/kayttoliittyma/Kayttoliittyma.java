@@ -5,38 +5,37 @@
  */
 package pietnurm.kayttoliittyma;
 
+import java.awt.Container;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 /**
  *
  * @author pieta
  */
-public class Kayttoliittyma {
+public class Kayttoliittyma implements Runnable {
     private JFrame frame;
+
+    public Kayttoliittyma() {
+    }
 
     @Override
     public void run() {
-        frame = new JFrame("Haikugeneraattori");
-        frame.setPreferredSize(new Dimension(400, 400));
+        frame = new JFrame("Otsikko");
+        frame.setPreferredSize(new Dimension(200, 100));
+
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+
         luoKomponentit(frame.getContentPane());
-        
+
         frame.pack();
         frame.setVisible(true);
     }
 
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(2, 1);
-        container.setLayout(layout);
-        
-        JLabel yla = new JLabel("", SwingConstants.CENTER);
-        JButton nappi = new JButton("Generoi uusi haiku");
-//        JLabel ala = new JLabel("");
-        
-        TapahtumanKuuntelija kuuntelija = new TapahtumanKuuntelija(yla);
-        nappi.addActionListener(kuuntelija);
-        
-        container.add(yla);
-        container.add(nappi);
-//        container.add(ala);
+    }
+
+    public JFrame getFrame() {
+        return frame;
     }
 }

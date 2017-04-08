@@ -6,6 +6,8 @@
 package pietnurm;
 
 import java.util.ArrayList;
+import javax.swing.SwingUtilities;
+import pietnurm.kayttoliittyma.Kayttoliittyma;
 import pietnurm.logiikka.Alakategoria;
 import pietnurm.logiikka.Kategoria;
 import pietnurm.logiikka.Kysymys;
@@ -23,6 +25,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Kysymysvarasto kysymysvarasto = new Kysymysvarasto();
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+        SwingUtilities.invokeLater(kayttoliittyma);
         
         Kysymys kysymys1 = new Kysymys("Kumpi voitti?", "No Kampi tietysti.");
         Kysymys kysymys2 = new Kysymys("Kumpi hävisi?", "No Kumpi tietysti.");
