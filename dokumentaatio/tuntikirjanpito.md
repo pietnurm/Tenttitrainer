@@ -7,3 +7,5 @@ Päivä | Tunnit | Kuvaus
 23.03.2017 | 3.5h | Testit loppuun, pit- ja checkstyle-säätöä ym.
 30.03.2017 | 3,5h | Koodailua, testailua, säätöä
 06.04.2017 | 3,5h | Koodailua
+08.04.2017 | 3,5h | Käyttöliittymää ym.
+09.04.2017 |
