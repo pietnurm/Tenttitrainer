@@ -6,14 +6,13 @@
 package pietnurm.kayttoliittyma;
 
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ContainerListener;
 
 /**
  *
  * @author pieta
  */
-public class NappikuuntelijaKysymyseditori implements ActionListener {
+public class NappikuuntelijaKysymyseditori implements ContainerListener {
     
     private Container container;
     
