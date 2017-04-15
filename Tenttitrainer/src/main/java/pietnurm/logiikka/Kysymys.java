@@ -19,12 +19,24 @@ public class Kysymys {
         this.mallivastaus = mallivastaus;
         this.alakategoria = "";
     }
+    /**
+     * Metodi muuttaa kysymyksen sisällön parametrin arvon mukaiseksi.
+     * @param uusiKysymys 
+     */
     public void muokkaaKysymysta(String uusiKysymys) {
         this.kysymys = uusiKysymys;
     }
+    /**
+     * Metodi muokkaa kysymyksen mallivastauksen sisällön parametrin arvon mukaiseksi.
+     * @param uusiMallivastaus 
+     */
     public void muokkaaMallivastausta(String uusiMallivastaus) {
         this.mallivastaus = uusiMallivastaus;
     }
+    /**
+     * Metodilla voi asettaa kysymyksen parametrin mukaan nimettyyn alakategoriaan.
+     * @param nimi 
+     */
     public void annaAlakategoria(String nimi) {
         this.alakategoria = nimi;
     }
