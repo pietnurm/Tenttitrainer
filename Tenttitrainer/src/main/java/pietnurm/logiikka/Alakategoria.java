@@ -8,7 +8,7 @@ package pietnurm.logiikka;
 import java.util.ArrayList;
 
 /**
- *
+ * Luokka mahdollistaa Kysymys-olioiden liittamisen kyseiseen alakategoriaan.
  * @author pieta
  */
 public class Alakategoria {

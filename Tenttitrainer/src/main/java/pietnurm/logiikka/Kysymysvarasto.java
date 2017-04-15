@@ -8,7 +8,7 @@ package pietnurm.logiikka;
 import java.util.ArrayList;
 
 /**
- *
+ * Luokka pitaa sisallaan kysymykset kaikista kategorioista ja alakategorioista.
  * @author pieta
  */
 public class Kysymysvarasto {

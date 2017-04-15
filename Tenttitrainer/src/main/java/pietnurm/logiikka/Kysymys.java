@@ -6,7 +6,7 @@
 package pietnurm.logiikka;
 
 /**
- *
+ * Luokka yksittäiselle kysymykselle ja sen mallivastaukselle.
  * @author pieta
  */
 public class Kysymys {

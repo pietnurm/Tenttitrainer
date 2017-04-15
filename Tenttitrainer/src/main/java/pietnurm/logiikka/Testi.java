@@ -11,7 +11,7 @@ import pietnurm.logiikka.Alakategoria;
 import pietnurm.logiikka.Kategoria;
 
 /**
- *
+ * Luokka, joka tenttii kayttajalta taman valitsemia kysymyksia.
  * @author pieta
  */
 public class Testi {
@@ -23,9 +23,14 @@ public class Testi {
     private String omaVastaus;
     private int pistesaldo;
     
+    /**
+     * Luo testin valittujen alakategorioiden kysymysten pohjalta.
+     * @param kysymysvarasto
+     * @param kategoria
+     * @param alakategoriat 
+     */
     public Testi (Kysymysvarasto kysymysvarasto, Kategoria kategoria, ArrayList<Alakategoria> alakategoriat) {
         this.kysymysvarasto = kysymysvarasto;
-        this.kategoria = kategoria;
         this.kategoria = kategoria;
         this.alakategoriat = alakategoriat;
         this.kysymyslista = new ArrayList<>();
@@ -33,16 +38,37 @@ public class Testi {
         this.omaVastaus = "";
         this.pistesaldo = 0;
     } 
+    /**
+     * Luo testin valitun kategorian kysymysten pohjalta.
+     * @param kysymysvarasto
+     * @param kategoria 
+     */
     public Testi (Kysymysvarasto kysymysvarasto, Kategoria kategoria) {
         this.kysymysvarasto = kysymysvarasto;
         this.kategoria = kategoria;
         this.alakategoriat = null;
+        this.kysymyslista = new ArrayList<>();
+        this.kysymysIndex = 0;
+        this.omaVastaus = "";
+        this.pistesaldo = 0;
     }
+    /**
+     * Luo testin kaikkien kysymysvaraston kysymysten pohjalta.
+     * @param kysymysvarasto 
+     */
     public Testi (Kysymysvarasto kysymysvarasto) {
         this.kysymysvarasto = kysymysvarasto;
         this.kategoria = null;
         this.alakategoriat = null;
+        this.kysymyslista = new ArrayList<>();
+        this.kysymysIndex = 0;
+        this.omaVastaus = "";
+        this.pistesaldo = 0;
     }
+    /**
+     * Metodi luo tenttaamista varten oikean laajuisen satunnaistetun kysymyslistan 
+     * perustuen konstruktorin parametreihin.
+     */
     public void testaa() {
         if (this.kategoria == null && this.alakategoriat == null) {
             // testaa kaikkia kysymyksiä
@@ -69,6 +95,7 @@ public class Testi {
             this.kysymyslista = valitutKysymykset;
 //            esitaKysymykset(valitutKysymykset);
         }
+        Collections.shuffle(kysymyslista);
     }
 //    public void esitaKysymykset(ArrayList<Kysymys> kysymyslista) {
 //        Collections.shuffle(kysymyslista);
@@ -76,27 +103,52 @@ public class Testi {
 //            System.out.println(kysymyslista.get(i).haeKysymys());
 //        }
 //    }
+    /**
+     * Metodi palauttaa kysymysIndex-muuttujan mukaisen kysymyksen kysymyslistalta.
+     * @return 
+     */
     public String esitaKysymys() {
         String kysymys = kysymyslista.get(kysymysIndex).haeKysymys();
         return kysymys;
     }
+    /**
+     * Metodi palauttaa edelliseen kysymykseen liittyvan mallivastauksen ja 
+     * siirtyy kysymyslistalla seuraavaan kysymykseen.
+     * @return 
+     */
     public String esitaMallivastaus() {
         String mallivastaus = kysymyslista.get(kysymysIndex).haeMallivastaus();
         // siirtyy seuraavaan kysymykseen
         kysymysIndex++;
         return mallivastaus;
     }
+    /**
+     * Tallentaa parametrina annetun kayttajan vastauksen omaVastaus-muuttujaan.
+     * @param omaVastaus 
+     */
     public void annaOmaVastaus(String omaVastaus) {
         this.omaVastaus = omaVastaus;
     }
+    /**
+     * Palauttaa omaVastaus-muuttujan arvon.
+     * @return 
+     */
     public String palautaOmaVastaus() {
         return omaVastaus;
     }
+    /**
+     * Metodi lisaa testin pistesaldoon parametrina annetun kokonaisluvun.
+     * @param arvostelu 
+     */
     public void arvostele(int arvostelu) {
         this.pistesaldo = pistesaldo + arvostelu;
     }
+    /**
+     * Palauttaa testin kysymysten keskiarvopisteet perustuen kysyttyjen kysymysten maaraan.
+     * @return 
+     */
     public double testinKeskiarvo() {
-        double keskiarvo = (double)pistesaldo/ (double)kysymyslista.size();
+        double keskiarvo = (double)pistesaldo/ (double)kysymysIndex;
         return keskiarvo;
     }
 }
