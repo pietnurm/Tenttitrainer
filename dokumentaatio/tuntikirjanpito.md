@@ -8,4 +8,5 @@ Päivä | Tunnit | Kuvaus
 30.03.2017 | 3,5h | Koodailua, testailua, säätöä
 06.04.2017 | 3,5h | Koodailua
 08.04.2017 | 3,5h | Käyttöliittymää ym.
-09.04.2017 |
+09.04.2017 | 2,5h | Säätöä ja jotai..
+15.04.2017 | 
