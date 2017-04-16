@@ -5,6 +5,7 @@
  */
 package pietnurm;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 import pietnurm.kayttoliittyma.Kayttoliittyma;
@@ -22,8 +23,9 @@ public class Main {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Kysymysvarasto kysymysvarasto = new Kysymysvarasto();
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
         SwingUtilities.invokeLater(kayttoliittyma);
@@ -45,7 +47,8 @@ public class Main {
 //        Kategoria kategoria2 = new Kategoria("kurssi2");
 //        kategoria.lisaaKysymys(kysymys1);
 //        
-//        kysymysvarasto.lisaaKategoria(kategoria);
+        kysymysvarasto.lisaaKategoria(kategoria);
+        
 //        kysymysvarasto.lisaaKategoria(kategoria2);
 //        
 //        Alakategoria alakategoria = new Alakategoria("alakategoria1");
@@ -59,7 +62,7 @@ public class Main {
 //        alakategoriat.add(alakategoria);
 //        alakategoriat.add(alakategoria2);
         
-        ArrayList<Kysymys> lista = kategoria.palautaKysymykset();
+        ArrayList<Kysymys> lista = kysymysvarasto.palautaKaikkiKysymykset();
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(lista.get(i).haeKysymys());
             System.out.println(lista.get(i).haeMallivastaus());

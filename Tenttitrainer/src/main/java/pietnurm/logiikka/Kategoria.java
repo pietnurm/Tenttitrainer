@@ -7,6 +7,8 @@ package pietnurm.logiikka;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,20 +23,23 @@ public class Kategoria {
     private ArrayList<Kysymys> kysymykset;
     private ArrayList<Alakategoria> alakategoriat;
     private Scanner scanner;
+    private FileWriter kysymysKirjoittaja;
+    private FileWriter mallivastausKirjoittaja;
     
-    public Kategoria(String nimi) {
+    public Kategoria(String nimi) throws IOException {
         this.nimi = nimi;
         this.kysymykset = new ArrayList();
         this.alakategoriat = new ArrayList();
+        this.kysymysKirjoittaja = new FileWriter("kysymykset_" + nimi + ".txt", true);
+        this.mallivastausKirjoittaja = new FileWriter("mallivastaukset_" + nimi + ".txt", true);
     }
     /**
      * Hakee tekstitiedostoista kategoriaan aiemmin tallennetut kysymykset ja mallivastaukset.
      */
     public void haeTallennetutKysymykset() {
         ArrayList<String> kysymyslista = new ArrayList();
-        ArrayList<String> mallivastauslista = new ArrayList();
-//  MUISTA MUOKKAA FILENAMET KATEGORIAN NIMEN MUKAISEKSI! JA JOKU UUDEN FILEEN LUOMISMEKANISMI.        
-        File kysymysFile = new File("kysymykset.txt");
+        ArrayList<String> mallivastauslista = new ArrayList();       
+        File kysymysFile = new File("kysymykset_" + nimi + ".txt");
         try {
         this.scanner = new Scanner(kysymysFile);
 
@@ -44,7 +49,7 @@ public class Kategoria {
             }
         } catch (FileNotFoundException e) {
             }
-        File mallivastausFile = new File("mallivastaukset.txt");
+        File mallivastausFile = new File("mallivastaukset_" + nimi + ".txt");
         try {
         this.scanner = new Scanner(mallivastausFile);
 
@@ -59,21 +64,6 @@ public class Kategoria {
             String mallivastaus = mallivastauslista.get(i);
             kysymykset.add(new Kysymys(kysymys, mallivastaus));
         }
-        
-        
-//        InputStream kysymysStream = this.getClass().getResourceAsStream("/" + "kysymykset.txt");
-//        this.scanner = new Scanner(kysymysStream, "UTF-8");
-//        while (scanner.hasNextLine()){
-//            kysymys = scanner.nextLine();
-//        }
-//        scanner.close();
-//        InputStream mallivastausStream = this.getClass().getResourceAsStream("/" + "mallivastaukset.txt");
-//        this.scanner = new Scanner(mallivastausStream, "UTF-8");
-//        while (scanner.hasNextLine()){
-//            mallivastaus = scanner.nextLine();
-//        }
-//        scanner.close();
-//        lisaaKysymys(new Kysymys(kysymys, mallivastaus));
     }
     
     public String palautaKategorianNimi() {
