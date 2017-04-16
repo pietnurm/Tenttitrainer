@@ -10,3 +10,4 @@ Päivä | Tunnit | Kuvaus
 08.04.2017 | 3,5h | Käyttöliittymää ym.
 09.04.2017 | 2,5h | Säätöä ja jotai..
 15.04.2017 | 3h | Javadocia, käyttöliittymää ja hajoilua
+16.04.2017 | 8,5h | Kysymysten ja kategorioiden tallentaminen ja hakeminen tiedostoista, käyttöliittymä, yleinen sovelluslogiikan muokkaaminen, tenttaaminen...
