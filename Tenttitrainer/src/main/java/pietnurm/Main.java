@@ -27,6 +27,7 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         Kysymysvarasto kysymysvarasto = new Kysymysvarasto();
+        kysymysvarasto.haeTallennetutKategoriat();
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
         SwingUtilities.invokeLater(kayttoliittyma);
         
@@ -36,10 +37,13 @@ public class Main {
         
 //        System.out.println(kysymys1.haeKysymys());
 //        System.out.println(kysymys1.haeMallivastaus());
+
         
-        Kategoria kategoria = new Kategoria("kurssi1");
-        
-        kategoria.haeTallennetutKysymykset();
+
+//        Kategoria kategoria = new Kategoria("kurssi1");
+//        Kategoria kategoria2 = new Kategoria("kurssi2");
+//        
+//        kategoria.haeTallennetutKysymykset();
         
 //        kategoria.lisaaKysymys(kysymys3);
 //        kategoria.lisaaKysymys(kysymys2);
@@ -47,7 +51,7 @@ public class Main {
 //        Kategoria kategoria2 = new Kategoria("kurssi2");
 //        kategoria.lisaaKysymys(kysymys1);
 //        
-        kysymysvarasto.lisaaKategoria(kategoria);
+//        kysymysvarasto.lisaaKategoria(kategoria);
         
 //        kysymysvarasto.lisaaKategoria(kategoria2);
 //        

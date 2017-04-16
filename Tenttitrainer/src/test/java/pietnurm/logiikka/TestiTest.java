@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,7 +35,7 @@ public class TestiTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         kategoria = new Kategoria("kurssi1");
         alakategoria1 = new Alakategoria("alakategoria1");
         alakategoria2 = new Alakategoria("alakategoria2");    

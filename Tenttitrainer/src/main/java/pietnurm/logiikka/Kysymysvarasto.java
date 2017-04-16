@@ -5,21 +5,48 @@
  */
 package pietnurm.logiikka;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Luokka pitaa sisallaan kysymykset kaikista kategorioista ja alakategorioista.
  * @author pieta
  */
 public class Kysymysvarasto {
+    private File kategorialista;
+    private Scanner scanner;
     private ArrayList<Kategoria> kaikkiKategoriat;
     
     public Kysymysvarasto() {
+        this.kategorialista = new File("kategorialista.txt");
         kaikkiKategoriat = new ArrayList<>();
     }
+    /**
+     * Hakee aiemmin tallennetut kategoriat ja kategorioiden kysymykset.
+     * @throws IOException 
+     */
+    public void haeTallennetutKategoriat() throws IOException {
+        try {
+        this.scanner = new Scanner(kategorialista);
+
+        while (scanner.hasNextLine()){
+            String nimi = scanner.nextLine();
+            Kategoria kategoria = new Kategoria(nimi);
+            kategoria.haeTallennetutKysymykset();
+            lisaaKategoria(kategoria);
+            }
+        } catch (FileNotFoundException e) {
+            }
+    }
+    
     public void lisaaKategoria(Kategoria kategoria) {
         this.kaikkiKategoriat.add(kategoria);
     }
+    // MUISTA POISTAA MYÖS KATEGORIALISTA-FILESTA
     public void poistaKategoria(Kategoria kategoria) {
         for (int i = 0; i < kaikkiKategoriat.size(); i++) {
             if (kaikkiKategoriat.get(i).equals(kategoria)) {

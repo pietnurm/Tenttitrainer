@@ -60,7 +60,7 @@ public class Testi {
         this.kysymysvarasto = kysymysvarasto;
         this.kategoria = null;
         this.alakategoriat = null;
-        this.kysymyslista = new ArrayList<>();
+//        this.kysymyslista = new ArrayList<>();
         this.kysymysIndex = 0;
         this.omaVastaus = "";
         this.pistesaldo = 0;
@@ -96,6 +96,7 @@ public class Testi {
 //            esitaKysymykset(valitutKysymykset);
         }
         Collections.shuffle(kysymyslista);
+        System.out.println(kysymyslista.get(0).haeKysymys());
     }
 //    public void esitaKysymykset(ArrayList<Kysymys> kysymyslista) {
 //        Collections.shuffle(kysymyslista);
@@ -108,7 +109,9 @@ public class Testi {
      * @return 
      */
     public String esitaKysymys() {
-        String kysymys = kysymyslista.get(kysymysIndex).haeKysymys();
+    //    testaa();
+        
+        String kysymys = this.kysymyslista.get(kysymysIndex).haeKysymys();
         return kysymys;
     }
     /**

@@ -5,6 +5,7 @@
  */
 package pietnurm.logiikka;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,7 +36,7 @@ public class KategoriaTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         kategoria = new Kategoria("kurssi1");
         kysymys1 = new Kysymys("Kumpi voitti?", "No Kampi tietysti.");
         kysymys2 = new Kysymys("Kumpi hävisi?", "No Kumpi tietysti.");

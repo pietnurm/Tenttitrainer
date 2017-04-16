@@ -5,6 +5,7 @@
  */
 package pietnurm.logiikka;
 
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -35,7 +36,7 @@ public class AlakategoriaTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         alakategoria = new Alakategoria("alakategoria1");
         kategoria = new Kategoria("kategoria1");
         kysymys1 = new Kysymys("kysymys1", "mallivastaus1");

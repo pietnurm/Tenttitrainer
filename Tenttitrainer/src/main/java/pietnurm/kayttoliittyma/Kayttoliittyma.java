@@ -13,6 +13,9 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,6 +31,7 @@ public class Kayttoliittyma implements Runnable {
     private JPanel cards;
     private final static String VALIKKOPANEL = "valikko";
     private final static String EDITPANEL = "kysymyseditori";
+    private final static String TENTTIVALIKKO = "tenttivalikko";
 
     public Kayttoliittyma() {
     }
@@ -40,8 +44,12 @@ public class Kayttoliittyma implements Runnable {
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-//        luoKomponentit(frame.getContentPane());
-        luoKomponentit();
+        try {
+            //        luoKomponentit(frame.getContentPane());
+            luoKomponentit();
+        } catch (IOException ex) {
+            Logger.getLogger(Kayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         frame.add(cards);
         
@@ -49,7 +57,7 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
-    private void luoKomponentit() {
+    private void luoKomponentit() throws IOException {
         
         // luo paavalikon
         JPanel valikko = new JPanel(new GridLayout(5, 1));
@@ -69,12 +77,18 @@ public class Kayttoliittyma implements Runnable {
                 cl.show(cards, EDITPANEL);
             }
         });
-      
         valikko.add(luo);
         
         JButton testaa = new JButton("Testaa itseäsi");
         testaa.setFont(new Font("Rockwell", Font.PLAIN, 20));
         testaa.setBackground(new Color(0xffffff));
+        testaa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                CardLayout cl = (CardLayout) (cards.getLayout());
+                cl.show(cards, TENTTIVALIKKO);
+            }
+        });
         valikko.add(testaa);
         
         JButton tulokset = new JButton("Tulokset");
@@ -86,10 +100,13 @@ public class Kayttoliittyma implements Runnable {
         this.cards = new JPanel(new CardLayout());
         
         Kysymyseditori editori = new Kysymyseditori();
+        Tenttinakyma tenttinakyma = new Tenttinakyma();
         JPanel editPanel = editori.luo();
+        JPanel tenttivalikko = tenttinakyma.luo();
         
         cards.add(valikko, VALIKKOPANEL);
         cards.add(editPanel, EDITPANEL);
+        cards.add(tenttivalikko, TENTTIVALIKKO);
         
     }
         

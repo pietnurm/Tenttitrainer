@@ -23,8 +23,10 @@ public class Kategoria {
     private ArrayList<Kysymys> kysymykset;
     private ArrayList<Alakategoria> alakategoriat;
     private Scanner scanner;
+    private boolean onkoListalla;
     private FileWriter kysymysKirjoittaja;
     private FileWriter mallivastausKirjoittaja;
+    private FileWriter kategorialistaKirjoittaja;
     
     public Kategoria(String nimi) throws IOException {
         this.nimi = nimi;
@@ -32,6 +34,24 @@ public class Kategoria {
         this.alakategoriat = new ArrayList();
         this.kysymysKirjoittaja = new FileWriter("kysymykset_" + nimi + ".txt", true);
         this.mallivastausKirjoittaja = new FileWriter("mallivastaukset_" + nimi + ".txt", true);
+        this.kategorialistaKirjoittaja = new FileWriter("kategorialista.txt", true);
+        File kategorialista = new File("kategorialista.txt");
+        try {
+        this.scanner = new Scanner(kategorialista);
+        this.onkoListalla = false;
+        while (scanner.hasNextLine()){
+            String line = scanner.nextLine();
+            if (line.equals(nimi)) {
+                onkoListalla = true;
+            }
+            }
+        } catch (FileNotFoundException e) {
+            }
+        if (onkoListalla == false) {
+            kategorialistaKirjoittaja.write(nimi);
+            kategorialistaKirjoittaja.write(System.getProperty("line.separator"));
+            kategorialistaKirjoittaja.close();
+        }
     }
     /**
      * Hakee tekstitiedostoista kategoriaan aiemmin tallennetut kysymykset ja mallivastaukset.
