@@ -36,29 +36,34 @@ public class Main {
 //        System.out.println(kysymys1.haeMallivastaus());
         
         Kategoria kategoria = new Kategoria("kurssi1");
-        kategoria.lisaaKysymys(kysymys3);
-        kategoria.lisaaKysymys(kysymys2);
         
-        Kategoria kategoria2 = new Kategoria("kurssi2");
-        kategoria.lisaaKysymys(kysymys1);
+        kategoria.haeTallennetutKysymykset();
         
-        kysymysvarasto.lisaaKategoria(kategoria);
-        kysymysvarasto.lisaaKategoria(kategoria2);
+//        kategoria.lisaaKysymys(kysymys3);
+//        kategoria.lisaaKysymys(kysymys2);
+//        
+//        Kategoria kategoria2 = new Kategoria("kurssi2");
+//        kategoria.lisaaKysymys(kysymys1);
+//        
+//        kysymysvarasto.lisaaKategoria(kategoria);
+//        kysymysvarasto.lisaaKategoria(kategoria2);
+//        
+//        Alakategoria alakategoria = new Alakategoria("alakategoria1");
+//        Alakategoria alakategoria2 = new Alakategoria("alakategoria2");
+//        
+//        alakategoria.lisaaKysymys(kysymys3);
+//        alakategoria.lisaaKysymys(kysymys2);
+//        alakategoria2.lisaaKysymys(kysymys1);
+//        
+//        ArrayList<Alakategoria> alakategoriat = new ArrayList<>();
+//        alakategoriat.add(alakategoria);
+//        alakategoriat.add(alakategoria2);
         
-        Alakategoria alakategoria = new Alakategoria("alakategoria1");
-        Alakategoria alakategoria2 = new Alakategoria("alakategoria2");
-        
-        alakategoria.lisaaKysymys(kysymys3);
-        alakategoria.lisaaKysymys(kysymys2);
-        alakategoria2.lisaaKysymys(kysymys1);
-        
-        ArrayList<Alakategoria> alakategoriat = new ArrayList<>();
-        alakategoriat.add(alakategoria);
-        alakategoriat.add(alakategoria2);
-        
-//        ArrayList<Kysymys> lista = kategoria.palautaKysymykset();
-//        for (int i = 0; i < lista.size(); i++) {
-//            System.out.println(lista.get(i).haeKysymys());
+        ArrayList<Kysymys> lista = kategoria.palautaKysymykset();
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i).haeKysymys());
+            System.out.println(lista.get(i).haeMallivastaus());
+        }    
 //        
 //        kysymys1.annaAlakategoria("alakategoria1");
 //        kysymys2.annaAlakategoria("alakategoria1");
@@ -69,9 +74,9 @@ public class Main {
 //        for (int i = 0; i < kategoria.palautaAlakategoriat().size(); i++) {
 //            System.out.println(kategoria.palautaAlakategoriat().get(i).palautaNimi());
 //        }
-        Testi testi = new Testi(kysymysvarasto);
-        Testi testi2 = new Testi(kysymysvarasto, kategoria);
-        Testi testi3 = new Testi(kysymysvarasto, kategoria, alakategoriat);
+//        Testi testi = new Testi(kysymysvarasto);
+//        Testi testi2 = new Testi(kysymysvarasto, kategoria);
+//        Testi testi3 = new Testi(kysymysvarasto, kategoria, alakategoriat);
         
 
 //        testi.testaa();
