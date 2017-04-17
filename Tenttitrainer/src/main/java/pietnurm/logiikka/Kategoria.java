@@ -36,6 +36,7 @@ public class Kategoria {
         this.mallivastausKirjoittaja = new FileWriter("mallivastaukset_" + nimi + ".txt", true);
         this.kategorialistaKirjoittaja = new FileWriter("kategorialista.txt", true);
         File kategorialista = new File("kategorialista.txt");
+// Tarkistaa, onko samannimista kategoriaa tallennettu aiemmin. Jos ei, tallentaa nimen kategorialistaan.
         try {
         this.scanner = new Scanner(kategorialista);
         this.onkoListalla = false;
@@ -106,7 +107,8 @@ public class Kategoria {
         kysymykset.add(kysymys);
     }
     /**
-     * Poistaa kysymyksen kategoriasta.
+     * Poistaa kysymyksen kategoriasta. 
+     * HUOM!! MUISTA POISTAA MYOS KYSYMYS- JA MALLIVASTAUSLISTOILTA!!
      * @param kysymys 
      */
     public void poistaKysymys(Kysymys kysymys) {
