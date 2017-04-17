@@ -1,3 +1,5 @@
 kurssi1
 kurssi2
 kategoria1
+testikategoria1
+testikategoria2
