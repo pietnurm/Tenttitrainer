@@ -97,6 +97,23 @@ public class KysymysvarastoTest {
     }
     @Test
     public void kaikkienKysymystenPalauttaminenToimii() {
+        kategoria1.lisaaKysymys(new Kysymys("kyssäri1", "mallivastaus1"));
+        kategoria2.lisaaKysymys(new Kysymys("kyssäri2", "mallivastaus2"));
+        kategoria2.lisaaKysymys(new Kysymys("kyssäri3", "mallivastaus3"));
         
+        kysymysvarasto.lisaaKategoria(kategoria1);
+        kysymysvarasto.lisaaKategoria(kategoria2);
+        
+        ArrayList<Kategoria> testikategoriat = new ArrayList<>();
+        testikategoriat.add(kategoria1);
+        testikategoriat.add(kategoria2);
+        ArrayList<Kysymys> testikysymykset = new ArrayList<>();
+        for (int i = 0; i < testikategoriat.size(); i++) {
+            ArrayList<Kysymys> kategorianKysymykset = testikategoriat.get(i).palautaKysymykset();
+            for (int j = 0; j < kategorianKysymykset.size(); j++) {
+                testikysymykset.add(kategorianKysymykset.get(j));
+            }     
+        }
+        assertEquals(testikysymykset, kysymysvarasto.palautaKaikkiKysymykset());
     }
 }
