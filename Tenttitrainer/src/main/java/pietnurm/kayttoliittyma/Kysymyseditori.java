@@ -14,15 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- *
+ * Luokka kysymyseditorinakyman luomiseen.
  * @author pieta
  */
 public class Kysymyseditori { // extends JPanel {
 //    JPanel kysymyseditori;
     
-    public void Kysymyseditori() {
+//    public void Kysymyseditori() {
 //        this.kysymyseditori = new JPanel();
-    }
+//    }
     public JPanel luo() {
         JPanel valikko = new JPanel(new GridLayout(5, 1));
         

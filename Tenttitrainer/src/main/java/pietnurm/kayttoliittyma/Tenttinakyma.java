@@ -22,7 +22,7 @@ import pietnurm.logiikka.Kysymysvarasto;
 import pietnurm.logiikka.Testi;
 
 /**
- *
+ * Luokka tenttinakyman luomiseen ja paivittamiseen.
  * @author pieta
  */
 public class Tenttinakyma {

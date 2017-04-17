@@ -16,7 +16,7 @@ import pietnurm.logiikka.Testi;
 import pietnurm.logiikka.Kysymysvarasto;
 
 /**
- *
+ * Ohjelman paaluokka.
  * @author pieta
  */
 public class Main {

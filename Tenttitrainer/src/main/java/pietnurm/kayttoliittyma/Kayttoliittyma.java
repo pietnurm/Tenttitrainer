@@ -23,7 +23,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 /**
- *
+ * Luokka graafisen kayttoliittyman ajamiseen.
  * @author pieta
  */
 public class Kayttoliittyma implements Runnable {
