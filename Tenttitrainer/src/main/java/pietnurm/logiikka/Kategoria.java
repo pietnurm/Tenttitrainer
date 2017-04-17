@@ -82,7 +82,16 @@ public class Kategoria {
         for (int i = 0; i < kysymyslista.size(); i++) {
             String kysymys = kysymyslista.get(i);
             String mallivastaus = mallivastauslista.get(i);
-            kysymykset.add(new Kysymys(kysymys, mallivastaus));
+            Kysymys kysymysehdokas = new Kysymys(kysymys, mallivastaus);
+            boolean onkoListalla = false;
+            for (int j = 0; j < kysymykset.size(); j++) {
+                if (kysymykset.get(j) == kysymysehdokas) {
+                    onkoListalla = true;
+                }
+            }
+            if (onkoListalla == false) {
+                kysymykset.add(kysymysehdokas);
+            }
         }
     }
     
