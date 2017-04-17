@@ -69,18 +69,16 @@ public class Testi {
      * Metodi luo tenttaamista varten oikean laajuisen satunnaistetun kysymyslistan 
      * perustuen konstruktorin parametreihin.
      */
-    public void testaa() {
+    public void luoKysymyslista() {
         if (this.kategoria == null && this.alakategoriat == null) {
             // testaa kaikkia kysymyksiä
             ArrayList<Kysymys> valitutKysymykset = this.kysymysvarasto.palautaKaikkiKysymykset();
             this.kysymyslista = valitutKysymykset;
-//            esitaKysymykset(valitutKysymykset);
         }
         else if (this.alakategoriat == null) {
             // testaa kaikkia kategorian kysymyksiä
             ArrayList<Kysymys> valitutKysymykset = this.kategoria.palautaKysymykset();
             this.kysymyslista = valitutKysymykset;
-//            esitaKysymykset(valitutKysymykset);
         }
         else {
             // testaa alakategorialistassa listattujen alakategorioiden kysymyksiä
@@ -93,24 +91,18 @@ public class Testi {
                 }
             }
             this.kysymyslista = valitutKysymykset;
-//            esitaKysymykset(valitutKysymykset);
         }
         Collections.shuffle(kysymyslista);
-        System.out.println(kysymyslista.get(0).haeKysymys());
     }
-//    public void esitaKysymykset(ArrayList<Kysymys> kysymyslista) {
-//        Collections.shuffle(kysymyslista);
-//        for (int i = 0; i < kysymyslista.size(); i++) {
-//            System.out.println(kysymyslista.get(i).haeKysymys());
-//        }
-//    }
+    public ArrayList<Kysymys> palautaKysymyslista() {
+        return this.kysymyslista;
+    }
+
     /**
      * Metodi palauttaa kysymysIndex-muuttujan mukaisen kysymyksen kysymyslistalta.
      * @return 
      */
     public String esitaKysymys() {
-    //    testaa();
-        
         String kysymys = this.kysymyslista.get(kysymysIndex).haeKysymys();
         return kysymys;
     }
@@ -146,12 +138,19 @@ public class Testi {
     public void arvostele(int arvostelu) {
         this.pistesaldo = pistesaldo + arvostelu;
     }
+    public int palautaPistesaldo() {
+        return this.pistesaldo;
+    }
     /**
      * Palauttaa testin kysymysten keskiarvopisteet perustuen kysyttyjen kysymysten maaraan.
      * @return 
      */
     public double testinKeskiarvo() {
-        double keskiarvo = (double)pistesaldo/ (double)kysymysIndex;
-        return keskiarvo;
+        if (kysymysIndex == 0) {
+            return 0.0;
+        } else {
+            double keskiarvo = (double)pistesaldo / (double)kysymysIndex;
+            return keskiarvo;
+        } 
     }
 }

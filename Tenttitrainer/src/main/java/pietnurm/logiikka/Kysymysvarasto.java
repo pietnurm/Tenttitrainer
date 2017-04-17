@@ -44,6 +44,7 @@ public class Kysymysvarasto {
     }
     
     public void lisaaKategoria(Kategoria kategoria) {
+        kategoria.haeTallennetutKysymykset();
         this.kaikkiKategoriat.add(kategoria);
     }
     // MUISTA POISTAA MYÖS KATEGORIALISTA-FILESTA

@@ -46,7 +46,7 @@ public class Tenttinakyma {
     
     public JPanel luo() throws IOException {
         testaaKaikki = new Testi(kysymysvarasto);
-        testaaKaikki.testaa();
+        testaaKaikki.luoKysymyslista();
         luoKomponentit();
         
         this.cards = new JPanel(new CardLayout());

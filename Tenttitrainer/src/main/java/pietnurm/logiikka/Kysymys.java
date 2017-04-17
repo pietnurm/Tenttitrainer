@@ -7,6 +7,7 @@ package pietnurm.logiikka;
 
 /**
  * Luokka yksittäiselle kysymykselle ja sen mallivastaukselle.
+ * LISAA TOIMINNALLISUUS AUTOMAATTISEEN TIEDOSTOON TALLENTAMISEEN JA POISTAMISEEN!
  * @author pieta
  */
 public class Kysymys {

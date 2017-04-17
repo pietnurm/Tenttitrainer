@@ -190,7 +190,16 @@ public class KategoriaTest {
     }
     @Test
     public void tallennettujenKysymystenHakeminenEiTuotaDuplikaatteja() {
-        
+        // TAA EI MITTAA MITAAN ENNEN KUIN lisaaKysymys() TALLENTAA TIEDOSTOON.
+        kategoria.lisaaKysymys(kysymys1);
+        kategoria.haeTallennetutKysymykset();
+        int laskuri = 0;
+        for (int i = 0; i < kategoria.palautaKysymykset().size(); i++) {
+            if (kategoria.palautaKysymykset().get(i).haeKysymys().equals("Kumpi voitti?")) {
+                laskuri++;
+            }
+        }
+        assertTrue(laskuri == 1);
     }
     @Test
     public void kysymystenPoistaminenToimii() {
