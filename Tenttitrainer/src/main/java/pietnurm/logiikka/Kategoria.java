@@ -38,16 +38,16 @@ public class Kategoria {
         File kategorialista = new File("kategorialista.txt");
 // Tarkistaa, onko samannimista kategoriaa tallennettu aiemmin. Jos ei, tallentaa nimen kategorialistaan.
         try {
-        this.scanner = new Scanner(kategorialista);
-        this.onkoListalla = false;
-        while (scanner.hasNextLine()){
-            String line = scanner.nextLine();
-            if (line.equals(nimi)) {
-                onkoListalla = true;
-            }
+            this.scanner = new Scanner(kategorialista);
+            this.onkoListalla = false;
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if (line.equals(nimi)) {
+                    onkoListalla = true;
+                }
             }
         } catch (FileNotFoundException e) {
-            }
+        }
         if (onkoListalla == false) {
             kategorialistaKirjoittaja.write(nimi);
             kategorialistaKirjoittaja.write(System.getProperty("line.separator"));
@@ -62,24 +62,22 @@ public class Kategoria {
         ArrayList<String> mallivastauslista = new ArrayList();       
         File kysymysFile = new File("kysymykset_" + nimi + ".txt");
         try {
-        this.scanner = new Scanner(kysymysFile);
-
-        while (scanner.hasNextLine()){
-            String line = scanner.nextLine();
-            kysymyslista.add(line);
+            this.scanner = new Scanner(kysymysFile);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                kysymyslista.add(line);
             }
         } catch (FileNotFoundException e) {
-            }
+        }
         File mallivastausFile = new File("mallivastaukset_" + nimi + ".txt");
         try {
-        this.scanner = new Scanner(mallivastausFile);
-
-        while (scanner.hasNextLine()){
-            String line = scanner.nextLine();
-            mallivastauslista.add(line);
+            this.scanner = new Scanner(mallivastausFile);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                mallivastauslista.add(line);
             }
         } catch (FileNotFoundException e) {
-            }
+        }
         for (int i = 0; i < kysymyslista.size(); i++) {
             String kysymys = kysymyslista.get(i);
             String mallivastaus = mallivastauslista.get(i);
@@ -143,7 +141,7 @@ public class Kategoria {
     /**
      * Palauttaa valitun alakategorian kysymykset.
      * @param alakategorianNimi
-     * @return 
+     * @return
      */
     public ArrayList<Kysymys> palautaAlakategorianKysymykset(String alakategorianNimi) {
         ArrayList<Kysymys> alakategorianKysymykset = new ArrayList();

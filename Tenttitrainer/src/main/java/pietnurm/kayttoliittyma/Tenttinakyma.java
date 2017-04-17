@@ -118,7 +118,7 @@ public class Tenttinakyma {
         });
         tentti.add(tarkistaVastaus);
         
-        this.mallivastaus = new JPanel(new GridLayout(4,1));
+        this.mallivastaus = new JPanel(new GridLayout(4, 1));
         mallivastaus.setBackground(new Color(0xffffff));
         
         JLabel vastauksesi = new JLabel(omaVastaus, SwingConstants.CENTER);

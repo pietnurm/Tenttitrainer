@@ -29,7 +29,7 @@ public class Testi {
      * @param kategoria
      * @param alakategoriat 
      */
-    public Testi (Kysymysvarasto kysymysvarasto, Kategoria kategoria, ArrayList<Alakategoria> alakategoriat) {
+    public Testi(Kysymysvarasto kysymysvarasto, Kategoria kategoria, ArrayList<Alakategoria> alakategoriat) {
         this.kysymysvarasto = kysymysvarasto;
         this.kategoria = kategoria;
         this.alakategoriat = alakategoriat;
@@ -43,7 +43,7 @@ public class Testi {
      * @param kysymysvarasto
      * @param kategoria 
      */
-    public Testi (Kysymysvarasto kysymysvarasto, Kategoria kategoria) {
+    public Testi(Kysymysvarasto kysymysvarasto, Kategoria kategoria) {
         this.kysymysvarasto = kysymysvarasto;
         this.kategoria = kategoria;
         this.alakategoriat = null;
@@ -56,7 +56,7 @@ public class Testi {
      * Luo testin kaikkien kysymysvaraston kysymysten pohjalta.
      * @param kysymysvarasto 
      */
-    public Testi (Kysymysvarasto kysymysvarasto) {
+    public Testi(Kysymysvarasto kysymysvarasto) {
         this.kysymysvarasto = kysymysvarasto;
         this.kategoria = null;
         this.alakategoriat = null;
@@ -74,13 +74,11 @@ public class Testi {
             // testaa kaikkia kysymyksiä
             ArrayList<Kysymys> valitutKysymykset = this.kysymysvarasto.palautaKaikkiKysymykset();
             this.kysymyslista = valitutKysymykset;
-        }
-        else if (this.alakategoriat == null) {
+        } else if (this.alakategoriat == null) {
             // testaa kaikkia kategorian kysymyksiä
             ArrayList<Kysymys> valitutKysymykset = this.kategoria.palautaKysymykset();
             this.kysymyslista = valitutKysymykset;
-        }
-        else {
+        } else {
             // testaa alakategorialistassa listattujen alakategorioiden kysymyksiä
             ArrayList<Kysymys> valitutKysymykset = new ArrayList<>();
             System.out.println(this.alakategoriat.size());
@@ -149,7 +147,7 @@ public class Testi {
         if (kysymysIndex == 0) {
             return 0.0;
         } else {
-            double keskiarvo = (double)pistesaldo / (double)kysymysIndex;
+            double keskiarvo = (double) pistesaldo / (double) kysymysIndex;
             return keskiarvo;
         } 
     }

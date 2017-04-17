@@ -31,16 +31,15 @@ public class Kysymysvarasto {
      */
     public void haeTallennetutKategoriat() throws IOException {
         try {
-        this.scanner = new Scanner(kategorialista);
-
-        while (scanner.hasNextLine()){
-            String nimi = scanner.nextLine();
-            Kategoria kategoria = new Kategoria(nimi);
-            kategoria.haeTallennetutKysymykset();
-            lisaaKategoria(kategoria);
+            this.scanner = new Scanner(kategorialista);
+            while (scanner.hasNextLine()) {
+                String nimi = scanner.nextLine();
+                Kategoria kategoria = new Kategoria(nimi);
+                kategoria.haeTallennetutKysymykset();
+                lisaaKategoria(kategoria);
             }
         } catch (FileNotFoundException e) {
-            }
+        }
     }
     
     public void lisaaKategoria(Kategoria kategoria) {
