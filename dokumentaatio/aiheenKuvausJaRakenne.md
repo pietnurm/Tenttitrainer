@@ -1,4 +1,4 @@
-# Aihemäärittely
+﻿# Aihemäärittely
 ## Aihe
 Luodaan opiskelua tukeva harjoittelusovellus, jonka avulla käyttäjä voi tenttiä itseltään haluamiinsa aihepiireihin liittyviä kysymyksiä. Käyttäjä luo itse kysymyksiä ja mallivastauksia haluamistaan kategorioista (esim kurssi) ja alakategorioista (esim. yksi kurssin aihepiiri). Käyttäjä pystyy muokkaamaan tai poistamaan yksittäisiä kysymyksiä ja kategorioita. Käyttäjä voi tenttiä itseltään kysymyksiä joko koko kategoriasta, yhdestä tai useammasta alakategoriasta, tai kaikista sovellukseen luoduista kategorioista. Ohjelma tenttii käyttäjältä kysymyksiä tämän valitsemista kategorioista satunnaisessa järjestyksessä. Se esittää ensin kysymyksen, ja käyttäjä kirjoittaa vastauksensa tekstikenttään. Tämän jälkeen ohjelma näyttää käyttäjän mallivastauksen sekä käyttäjän oman vastauksen rinnakkain, ja käyttäjä pisteyttää oman vastauksensa asteikolla 1-5. Ohjelma tallentaa käyttäjän pisteet tehtäväkohtaisesti ja laskee keskiarvot jokaiselle kategorialle, alakategorialle ja yksittäiselle kysymykselle. Keskiarvot ovat nähtävissä ohjelman "tulokset"-osiossa. Käyttäjä voi resetoida keskiarvolaskurit kategoriakohtaisesti. Ohjelma tallentaa kysymykset ja tulokset tekstitiedostoihin ohjelman kansiorakenteeseen.
 ## Käyttäjät
@@ -28,5 +28,5 @@ Opiskelija (käyttäjä)
   - näyttää samalla, montako kysymystä kategoria sisältää ja montako kertaa yksittäiseen kysymymykseen on vastattu
 - nollaa kategorian/alakategorian ja kaikkien sen kysymysten laskurit
 
-## Alustava luokkakaavio
-![Alt text](https://helsinkifi-my.sharepoint.com/personal/pietnurm_ad_helsinki_fi/_layouts/15/guestaccess.aspx?docid=1c7808b718e184256b818aeb18473ca4b&authkey=AXZ3yxbUUW5s-kq52KRzFR4)
+## Alustava luokkakaavio (päivitetty)
+![Alt text](https://helsinkifi-my.sharepoint.com/personal/pietnurm_ad_helsinki_fi/_layouts/15/guestaccess.aspx?docid=1c8f7c6b1b2fd42e0b2ac9c7e810b6d86&authkey=AZ4M65fJtDPzjhMO4J8aR1Q)
