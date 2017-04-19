@@ -12,3 +12,5 @@ Päivä | Tunnit | Kuvaus
 15.04.2017 | 3h | Javadocia, käyttöliittymää ja hajoilua
 16.04.2017 | 8,5h | Kysymysten ja kategorioiden tallentaminen ja hakeminen tiedostoista, käyttöliittymä, yleinen sovelluslogiikan muokkaaminen, tenttaaminen..
 17.04.2017 | 5,5h | Uusia testejä, koodin korjailua, checkstyle-virheiden korjaus, pit-raportti
+18.04.2017 | 1h | Uusi luokkakaavio, javadoc-raportti
+19.04.2017 | 2,5h | Sekvenssikaaviot
