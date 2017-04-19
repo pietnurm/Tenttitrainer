@@ -35,7 +35,7 @@ public class Kysymysvarasto {
             while (scanner.hasNextLine()) {
                 String nimi = scanner.nextLine();
                 Kategoria kategoria = new Kategoria(nimi);
-                kategoria.haeTallennetutKysymykset();
+//                kategoria.haeTallennetutKysymykset(); // lisaaKategoria toteuttaa jo tämän!
                 lisaaKategoria(kategoria);
             }
         } catch (FileNotFoundException e) {
