@@ -14,3 +14,4 @@ Päivä | Tunnit | Kuvaus
 17.04.2017 | 5,5h | Uusia testejä, koodin korjailua, checkstyle-virheiden korjaus, pit-raportti
 18.04.2017 | 1h | Uusi luokkakaavio, javadoc-raportti
 19.04.2017 | 2,5h | Sekvenssikaaviot
+26.04.2017 | 3h | Tenttinäkymän toiminnallisuutta ja käyttöliittymää
