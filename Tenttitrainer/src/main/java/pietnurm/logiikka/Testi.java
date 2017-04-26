@@ -101,7 +101,12 @@ public class Testi {
      * @return 
      */
     public String esitaKysymys() {
-        String kysymys = this.kysymyslista.get(kysymysIndex).haeKysymys();
+        String kysymys = "";
+        if (kysymysIndex == this.kysymyslista.size()) {
+            kysymys = "Testi on päättynyt.";
+        } else {
+            kysymys = this.kysymyslista.get(kysymysIndex).haeKysymys();
+        }
         return kysymys;
     }
     /**

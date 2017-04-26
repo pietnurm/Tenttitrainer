@@ -32,27 +32,30 @@ public class Tenttinakyma {
     private JPanel tentti;
     private JPanel tenttivalikko;
     private JPanel mallivastaus;
-    private String omaVastaus;
+    private JPanel lopetusruutu;
     private final static String TENTTIVALIKKO = "tenttivalikko";
     private final static String TENTTI = "tentti";
     private final static String MALLIVASTAUS = "mallivastaus";
+    private final static String LOPETUSRUUTU = "lopetusruutu";
     
     public Tenttinakyma() throws IOException {
         this.kysymysvarasto = new Kysymysvarasto();
         kysymysvarasto.haeTallennetutKategoriat();
-//        this.omaVastaus = "";
+        testaaKaikki = new Testi(kysymysvarasto);
+        testaaKaikki.luoKysymyslista();
 //        this.testi = new Testi(kysymysvarasto);
     }
     
     public JPanel luo() throws IOException {
-        testaaKaikki = new Testi(kysymysvarasto);
-        testaaKaikki.luoKysymyslista();
+//        testaaKaikki = new Testi(kysymysvarasto);
+//        testaaKaikki.luoKysymyslista();
         luoKomponentit();
         
         this.cards = new JPanel(new CardLayout());
         cards.add(tenttivalikko, TENTTIVALIKKO);
         cards.add(tentti, TENTTI);
         cards.add(mallivastaus, MALLIVASTAUS);
+        cards.add(lopetusruutu, LOPETUSRUUTU);
         
         return cards;
     }
@@ -94,15 +97,28 @@ public class Tenttinakyma {
         otsikkoTentti.setFont(new Font("Rockwell", Font.PLAIN, 36));
         tentti.add(otsikkoTentti);
         
-        JLabel kysymys = new JLabel(testaaKaikki.esitaKysymys(), SwingConstants.CENTER);
+        JLabel kysymys = new JLabel("", SwingConstants.CENTER);
+        kysymys.setText(testaaKaikki.esitaKysymys());
         kysymys.setBackground(new Color(0xffffdd));
         kysymys.setFont(new Font("Calibri", Font.PLAIN, 16));
         tentti.add(kysymys);
+        
+        // luodaan mallivastaus-cardia varten
+        JLabel kysymysUudestaan = new JLabel(testaaKaikki.esitaKysymys(), SwingConstants.CENTER);
+        kysymys.setBackground(new Color(0xffffdd));
+        kysymys.setFont(new Font("Calibri", Font.PLAIN, 16));
         
         JTextArea vastaus = new JTextArea("VASTAUKSESI: ");
         vastaus.setFont(new Font("Calibri", Font.PLAIN, 16));
         vastaus.setBackground(new Color(0xffffff));
         tentti.add(vastaus);
+        
+        // luodaan jlabel mallivastaus-cardia varten
+        JLabel vastauksesi = new JLabel();
+        vastauksesi.setFont(new Font("Calibri", Font.PLAIN, 16));
+        
+        JLabel mallivast = new JLabel();
+        mallivast.setFont(new Font("Calibri", Font.PLAIN, 16));
         
         JButton tarkistaVastaus = new JButton("Tarkista vastaus");
         tarkistaVastaus.setFont(new Font("Rockwell", Font.PLAIN, 20));
@@ -110,26 +126,67 @@ public class Tenttinakyma {
         tarkistaVastaus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                omaVastaus = vastaus.getText();
-                System.out.println(omaVastaus);
+                vastauksesi.setText(vastaus.getText());
+                kysymysUudestaan.setText(testaaKaikki.esitaKysymys());
+                mallivast.setText("<html>MALLIVASTAUS:<br>" + testaaKaikki.esitaMallivastaus() + "</html>");
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 cl.show(cards, MALLIVASTAUS);
             }
         });
-        omaVastaus = vastaus.getText();
         tentti.add(tarkistaVastaus);
+        
+        // MALLIVASTAUS/ARVIOINTI
         
         this.mallivastaus = new JPanel(new GridLayout(4, 1));
         mallivastaus.setBackground(new Color(0xffffff));
-        
-        JLabel vastauksesi = new JLabel(omaVastaus, SwingConstants.CENTER);
-        vastauksesi.setFont(new Font("Calibri", Font.PLAIN, 16));
+        mallivast.setBackground(new Color(0xffffdd));
+        mallivastaus.add(kysymysUudestaan);
+        mallivastaus.add(mallivast);
         mallivastaus.add(vastauksesi);
         
-        JLabel vastauksesi2 = new JLabel("pökäle", SwingConstants.CENTER);
-        vastauksesi2.setFont(new Font("Calibri", Font.PLAIN, 16));
-        mallivastaus.add(vastauksesi2);
-             
+        JButton seuraava = new JButton("Seuraava kysymys");
+        seuraava.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        seuraava.setBackground(new Color(0xffffdd));
+        seuraava.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                CardLayout cl = (CardLayout) (cards.getLayout());
+                if (testaaKaikki.esitaKysymys().equals("Testi on päättynyt.")) {
+                    cl.show(cards, LOPETUSRUUTU);
+                } else {
+                    kysymys.setText(testaaKaikki.esitaKysymys());
+                    vastaus.setText("VASTAUKSESI: ");
+                    cl.show(cards, TENTTI);
+                }
+            }
+        });
+        mallivastaus.add(seuraava);  
+        
+        // lopetusruutu
+        this.lopetusruutu = new JPanel(new GridLayout(4, 1));
+        lopetusruutu.setBackground(new Color(0xffffff));
+        JLabel loppuviesti = new JLabel("Tentti on päättynyt.", SwingConstants.CENTER);
+        loppuviesti.setFont(new Font("Rockwell", Font.PLAIN, 36));
+        lopetusruutu.add(loppuviesti);
+        
+        JLabel keskiarvo = new JLabel("Vastausten keskiarvo: ", SwingConstants.CENTER);
+        keskiarvo.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        lopetusruutu.add(keskiarvo);
+        
+        lopetusruutu.add(new JLabel()); // väliin tyhjä
+        
+        JButton lopeta = new JButton("Lopeta");
+        lopeta.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        lopeta.setBackground(new Color(0xffffdd));
+        lopetusruutu.add(lopeta);
+        lopeta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                CardLayout cl = (CardLayout) (cards.getLayout());
+                cl.show(cards, TENTTIVALIKKO);
+            }
+        });
+        
     }
     
 }
