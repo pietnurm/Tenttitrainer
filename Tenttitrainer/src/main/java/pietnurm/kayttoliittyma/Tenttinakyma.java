@@ -40,7 +40,7 @@ public class Tenttinakyma {
     public Tenttinakyma() throws IOException {
         this.kysymysvarasto = new Kysymysvarasto();
         kysymysvarasto.haeTallennetutKategoriat();
-        this.omaVastaus = "";
+//        this.omaVastaus = "";
 //        this.testi = new Testi(kysymysvarasto);
     }
     
@@ -111,11 +111,12 @@ public class Tenttinakyma {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 omaVastaus = vastaus.getText();
-                System.out.println(vastaus.getText());
+                System.out.println(omaVastaus);
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 cl.show(cards, MALLIVASTAUS);
             }
         });
+        omaVastaus = vastaus.getText();
         tentti.add(tarkistaVastaus);
         
         this.mallivastaus = new JPanel(new GridLayout(4, 1));
