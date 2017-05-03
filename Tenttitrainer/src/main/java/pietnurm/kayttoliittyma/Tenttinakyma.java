@@ -12,9 +12,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -113,12 +116,18 @@ public class Tenttinakyma {
         vastaus.setBackground(new Color(0xffffff));
         tentti.add(vastaus);
         
+        
+        
         // luodaan jlabel mallivastaus-cardia varten
         JLabel vastauksesi = new JLabel();
         vastauksesi.setFont(new Font("Calibri", Font.PLAIN, 16));
         
         JLabel mallivast = new JLabel();
         mallivast.setFont(new Font("Calibri", Font.PLAIN, 16));
+        
+        JPanel nappipaneeli = new JPanel();
+        nappipaneeli.setBackground(new Color(0xffffff));
+        tentti.add(nappipaneeli);
         
         JButton tarkistaVastaus = new JButton("Tarkista vastaus");
         tarkistaVastaus.setFont(new Font("Rockwell", Font.PLAIN, 20));
@@ -133,7 +142,20 @@ public class Tenttinakyma {
                 cl.show(cards, MALLIVASTAUS);
             }
         });
-        tentti.add(tarkistaVastaus);
+        nappipaneeli.add(tarkistaVastaus);
+        
+        JButton lopetaTentti = new JButton("Lopeta tentti");
+        lopetaTentti.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        lopetaTentti.setBackground(new Color(0xffffdd));
+        tentti.add(lopetaTentti);
+        lopetaTentti.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                CardLayout cl = (CardLayout) (cards.getLayout());
+                cl.show(cards, LOPETUSRUUTU);
+            }
+        });
+        nappipaneeli.add(lopetaTentti);
         
         // MALLIVASTAUS/ARVIOINTI
         
@@ -143,6 +165,24 @@ public class Tenttinakyma {
         mallivastaus.add(kysymysUudestaan);
         mallivastaus.add(mallivast);
         mallivastaus.add(vastauksesi);
+        
+        JPanel nappipaneeli2 = new JPanel(new GridLayout(3, 1));
+        nappipaneeli2.setBackground(new Color(0xffffff));
+        mallivastaus.add(nappipaneeli2);
+        
+        JLabel arviointiteksti = new JLabel("Arvostele vastauksesi", SwingConstants.CENTER);
+        arviointiteksti.setBackground(new Color(0xffffdd));
+        arviointiteksti.setFont(new Font("Rockwell", Font.PLAIN, 16));
+        nappipaneeli2.add(arviointiteksti);
+        
+        JSlider arviointiSlider = new JSlider(JSlider.HORIZONTAL, 0, 5, 1);
+        arviointiSlider.setBackground(new Color(0xffffff));
+        arviointiSlider.setMajorTickSpacing(1);
+        arviointiSlider.setPaintTicks(true);
+        arviointiSlider.setPaintLabels(true);
+        arviointiSlider.setFont(new Font("Rockwell", Font.PLAIN, 16));
+        
+        nappipaneeli2.add(arviointiSlider);
         
         JButton seuraava = new JButton("Seuraava kysymys");
         seuraava.setFont(new Font("Rockwell", Font.PLAIN, 20));
@@ -154,13 +194,14 @@ public class Tenttinakyma {
                 if (testaaKaikki.esitaKysymys().equals("Testi on päättynyt.")) {
                     cl.show(cards, LOPETUSRUUTU);
                 } else {
+                    System.out.println(arviointiSlider.getValue());
                     kysymys.setText(testaaKaikki.esitaKysymys());
                     vastaus.setText("VASTAUKSESI: ");
                     cl.show(cards, TENTTI);
                 }
             }
         });
-        mallivastaus.add(seuraava);  
+        nappipaneeli2.add(seuraava);  
         
         // lopetusruutu
         this.lopetusruutu = new JPanel(new GridLayout(4, 1));
