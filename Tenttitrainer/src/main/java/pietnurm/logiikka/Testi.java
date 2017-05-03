@@ -140,6 +140,13 @@ public class Testi {
      */
     public void arvostele(int arvostelu) {
         this.pistesaldo = pistesaldo + arvostelu;
+        String kysymys = kysymyslista.get(kysymysIndex - 1).haeKysymys();
+        ArrayList<Kategoria> kategorialista = kysymysvarasto.palautaKategoriat();
+        for (int i = 0; i < kategorialista.size(); i++) {
+            Scanner scanner = new Scanner()
+        }
+        
+        tallennaArvostelu(arvostelu, kategorianNimi);
     }
     public int palautaPistesaldo() {
         return this.pistesaldo;
@@ -155,5 +162,8 @@ public class Testi {
             double keskiarvo = (double) pistesaldo / (double) kysymysIndex;
             return keskiarvo;
         } 
+    }
+    public void tallennaArvostelu(int arvostelu, String kategoria) {
+        
     }
 }
