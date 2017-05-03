@@ -144,6 +144,11 @@ public class Tenttinakyma {
         });
         nappipaneeli.add(tarkistaVastaus);
         
+        // luodaan keskiarvo-label lopetusruutua varten
+        JLabel keskiarvo = new JLabel("", SwingConstants.CENTER);
+        keskiarvo.setFont(new Font("Rockwell", Font.PLAIN, 46));
+        
+        
         JButton lopetaTentti = new JButton("Lopeta tentti");
         lopetaTentti.setFont(new Font("Rockwell", Font.PLAIN, 20));
         lopetaTentti.setBackground(new Color(0xffffdd));
@@ -151,6 +156,7 @@ public class Tenttinakyma {
         lopetaTentti.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                keskiarvo.setText(new String(String.format("%.1f", testaaKaikki.testinKeskiarvo())));
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 cl.show(cards, LOPETUSRUUTU);
             }
@@ -192,9 +198,11 @@ public class Tenttinakyma {
             public void actionPerformed(ActionEvent ae) {
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 if (testaaKaikki.esitaKysymys().equals("Testi on päättynyt.")) {
+                    testaaKaikki.arvostele(arviointiSlider.getValue());
+                    keskiarvo.setText(new String(String.format("%.1f", testaaKaikki.testinKeskiarvo())));
                     cl.show(cards, LOPETUSRUUTU);
                 } else {
-                    System.out.println(arviointiSlider.getValue());
+                    testaaKaikki.arvostele(arviointiSlider.getValue());
                     kysymys.setText(testaaKaikki.esitaKysymys());
                     vastaus.setText("VASTAUKSESI: ");
                     cl.show(cards, TENTTI);
@@ -204,22 +212,32 @@ public class Tenttinakyma {
         nappipaneeli2.add(seuraava);  
         
         // lopetusruutu
-        this.lopetusruutu = new JPanel(new GridLayout(4, 1));
+        this.lopetusruutu = new JPanel(new GridLayout(3, 1));
         lopetusruutu.setBackground(new Color(0xffffff));
         JLabel loppuviesti = new JLabel("Tentti on päättynyt.", SwingConstants.CENTER);
         loppuviesti.setFont(new Font("Rockwell", Font.PLAIN, 36));
         lopetusruutu.add(loppuviesti);
         
-        JLabel keskiarvo = new JLabel("Vastausten keskiarvo: ", SwingConstants.CENTER);
-        keskiarvo.setFont(new Font("Rockwell", Font.PLAIN, 20));
-        lopetusruutu.add(keskiarvo);
+        JPanel keskiarvopaneeli = new JPanel(new GridLayout(2, 1));
+        keskiarvopaneeli.setBackground(new Color(0xffffff));
+        lopetusruutu.add(keskiarvopaneeli);
         
-        lopetusruutu.add(new JLabel()); // väliin tyhjä
+        JLabel keskiarvoOtsikko = new JLabel("Vastausten keskiarvo: ", SwingConstants.CENTER);
+        keskiarvoOtsikko.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        keskiarvopaneeli.add(keskiarvoOtsikko);
+//      keskiarvo-label on luotu aikaisemmin
+        keskiarvopaneeli.add(keskiarvo);
+        
+        JPanel nappipaneeli3 = new JPanel(new GridLayout(2, 1));
+        nappipaneeli3.setBackground(new Color(0xffffff));
+        lopetusruutu.add(nappipaneeli3);
+        
+        nappipaneeli3.add(new JLabel()); //tyhja valiin
         
         JButton lopeta = new JButton("Lopeta");
         lopeta.setFont(new Font("Rockwell", Font.PLAIN, 20));
         lopeta.setBackground(new Color(0xffffdd));
-        lopetusruutu.add(lopeta);
+        nappipaneeli3.add(lopeta);
         lopeta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
