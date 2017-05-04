@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 /**
@@ -33,6 +35,7 @@ public class Kayttoliittyma implements Runnable {
     public final static String VALIKKOPANEL = "valikko";
     private final static String EDITPANEL = "kysymyseditori";
     private final static String TENTTIVALIKKO = "tenttivalikko";
+    private final static String TULOKSET = "tulokset";
 
     public Kayttoliittyma() {
     }
@@ -60,9 +63,9 @@ public class Kayttoliittyma implements Runnable {
 
     public void luoKomponentit() throws IOException {
         
-        sisalto = new JPanel(new CardLayout());
-        
-        sisalto.add(new Kysymyseditori("editori"));
+//        sisalto = new JPanel(new CardLayout());
+//        
+//        sisalto.add(new Kysymyseditori("editori"));
         
         
         // luo paavalikon
@@ -100,7 +103,47 @@ public class Kayttoliittyma implements Runnable {
         JButton tulokset = new JButton("Tulokset");
         tulokset.setFont(new Font("Rockwell", Font.PLAIN, 20));
         tulokset.setBackground(new Color(0xffffdd));
+        tulokset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                CardLayout cl = (CardLayout) (cards.getLayout());
+                cl.show(cards, TULOKSET);
+            }
+        });
         valikko.add(tulokset);
+        
+        // Tulokset-Card
+        JPanel tulospaneeli = new JPanel(new GridLayout(3, 1));
+        tulospaneeli.setBackground(new Color(0xffffff));
+        
+        JLabel tulosotsikko = new JLabel("TULOKSET", SwingConstants.CENTER);
+        tulosotsikko.setFont(new Font("Rockwell", Font.PLAIN, 36));
+        tulospaneeli.add(tulosotsikko);
+        
+        JLabel keskiarvot = new JLabel("", SwingConstants.CENTER);
+        keskiarvot.setBackground(new Color(0xffffdd));
+        keskiarvot.setFont(new Font("Rockwell", Font.PLAIN, 16));
+        
+        keskiarvot.setText("sipuli");
+        
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
+
+//        keskiarvot.setFont(new Font("Rockwell", Font.PLAIN, 150));
+//        tulospaneeli.add(keskiarvot);
+        JScrollPane kaLuettelo = new JScrollPane(keskiarvot, 100, 100);
+//        kaLuettelo.setBackground(new Color(0xffffdd));
+        tulospaneeli.add(kaLuettelo);
+       
         
         // luo paapaneelin, joka pitaa sisallaan kaikki muut
         
@@ -115,8 +158,10 @@ public class Kayttoliittyma implements Runnable {
         cards.add(valikko, VALIKKOPANEL);
 //        cards.add(editPanel, EDITPANEL);
         cards.add(tenttivalikko, TENTTIVALIKKO);
+        cards.add(tulospaneeli, TULOKSET);
         
     }
+    
         
         
 //    private void luoKomponentit(Container container) {
