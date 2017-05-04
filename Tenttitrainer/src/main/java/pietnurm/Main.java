@@ -35,6 +35,7 @@ public class Main {
         
         
         Tulosarkisto arkisto = new Tulosarkisto();
+//        System.out.println(arkisto.tulosdata());
 //        System.out.println(arkisto.kategorianPisteet("kurssi1"));
 //        System.out.println(arkisto.kysymystenMaara("kurssi1"));
 //        System.out.println(arkisto.kategorianKeskiarvo("kurssi1"));

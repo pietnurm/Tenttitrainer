@@ -63,16 +63,26 @@ public class Tulosarkisto {
         // tee kaks listaa ja iske ne objektiin. hashmappi ei taida toimii niin hyvin.
         ArrayList<String> kategoriat = new ArrayList<>();
         ArrayList<String> keskiarvot = new ArrayList<>();
+        ArrayList<String> kysymysmaarat = new ArrayList<>();
         Scanner kategoriaskanneri = new Scanner(new File("kategorialista.txt"));
         while (kategoriaskanneri.hasNextLine()) {
             String kategorianNimi = kategoriaskanneri.nextLine();
-            kategoriat.add(kategorianNimi);
+            String kysymystenMaara = "" + kysymystenMaara(kategorianNimi);
             String keskiarvo = new String(String.format("%.1f", kategorianKeskiarvo(kategorianNimi)));
-            keskiarvot.add(keskiarvo);
+            if (!kysymystenMaara.equals("0")) {
+                kategoriat.add(kategorianNimi);
+                keskiarvot.add(keskiarvo);
+                kysymysmaarat.add(kysymystenMaara);
+            }    
         }
-        Object[][] tulosdata = new Object[kategoriat.size()][keskiarvot.size()];
-        for (int i = 0; i < kategoriat.size(); i++) {
-            tulosdata[i][kategoriat.get(i)] = keskiarvot.get(i);
+        Object[][] tulosdata = new Object[kategoriat.size()][3];
+        System.out.println(kategoriat.size());
+        System.out.println(keskiarvot.size());
+        for (int i = 0; i < 1; i++) {
+            tulosdata[i][0] = kategoriat.get(i);
+            tulosdata[i][1] = keskiarvot.get(i);
+            tulosdata[i][2] = kysymysmaarat.get(i);
         }
+        return tulosdata;
     }
 }

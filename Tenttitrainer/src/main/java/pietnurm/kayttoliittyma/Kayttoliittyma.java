@@ -21,9 +21,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import pietnurm.logiikka.Tulosarkisto;
 /**
  * Luokka graafisen kayttoliittyman ajamiseen.
  * @author pieta
@@ -123,25 +125,18 @@ public class Kayttoliittyma implements Runnable {
         JLabel keskiarvot = new JLabel("", SwingConstants.CENTER);
         keskiarvot.setBackground(new Color(0xffffdd));
         keskiarvot.setFont(new Font("Rockwell", Font.PLAIN, 16));
-        
-        keskiarvot.setText("sipuli");
-        
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
-        keskiarvot.setText("<html>" + keskiarvot.getText() + "<br>piirakka</html>");
 
 //        keskiarvot.setFont(new Font("Rockwell", Font.PLAIN, 150));
 //        tulospaneeli.add(keskiarvot);
-        JScrollPane kaLuettelo = new JScrollPane(keskiarvot, 100, 100);
-//        kaLuettelo.setBackground(new Color(0xffffdd));
+        Tulosarkisto arkisto = new Tulosarkisto();
+        String[] kolumnit = {"Kategoria", "Keskiarvo", "Vastattuja kysymyksiä"};
+        JTable tulostaulukko = new JTable(arkisto.tulosdata(), kolumnit);
+        tulostaulukko.setBackground(new Color(0xffffff));
+        tulostaulukko.setFont(new Font("Calibri", Font.PLAIN, 13));
+        
+        JScrollPane kaLuettelo = new JScrollPane(tulostaulukko);
+        kaLuettelo.setBackground(new Color(0xffffdd));
+//        kaLuettelo.setFont(new Font("Rockwell", Font.PLAIN, 15));
         tulospaneeli.add(kaLuettelo);
        
         
