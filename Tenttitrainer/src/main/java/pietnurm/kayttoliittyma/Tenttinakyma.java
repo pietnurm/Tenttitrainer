@@ -30,7 +30,8 @@ import pietnurm.logiikka.Testi;
  * Luokka tenttinakyman luomiseen ja paivittamiseen.
  * @author pieta
  */
-public class Tenttinakyma {
+public class Tenttinakyma extends Kayttoliittyma {
+//    private JPanel kayttoliittymaLayout;
     private Kysymysvarasto kysymysvarasto;
     private Testi testaaKaikki;
     private JPanel cards;
@@ -44,10 +45,12 @@ public class Tenttinakyma {
     private final static String LOPETUSRUUTU = "lopetusruutu";
     
     public Tenttinakyma() throws IOException {
+//        this.kayttoliittymaLayout = super(cards);
         this.kysymysvarasto = new Kysymysvarasto();
         kysymysvarasto.haeTallennetutKategoriat();
         testaaKaikki = new Testi(kysymysvarasto);
         testaaKaikki.luoKysymyslista();
+
 //        this.testi = new Testi(kysymysvarasto);
     }
     
@@ -56,7 +59,7 @@ public class Tenttinakyma {
 //        testaaKaikki.luoKysymyslista();
         luoKomponentit();
         
-        this.cards = new JPanel(new CardLayout());
+        this.cards = super(cards); //new JPanel(new CardLayout());
         cards.add(tenttivalikko, TENTTIVALIKKO);
         cards.add(tentti, TENTTI);
         cards.add(mallivastaus, MALLIVASTAUS);
@@ -91,10 +94,18 @@ public class Tenttinakyma {
         testaa.setBackground(new Color(0xffffff));
         tenttivalikko.add(testaa);
         
-        JButton tulokset = new JButton("");
-        tulokset.setFont(new Font("Rockwell", Font.PLAIN, 20));
-        tulokset.setBackground(new Color(0xffffdd));
-        tenttivalikko.add(tulokset);
+        JButton palaaValikkoon = new JButton("Takaisin valikkoon");
+        palaaValikkoon.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        palaaValikkoon.setBackground(new Color(0xffffdd));
+        tenttivalikko.add(palaaValikkoon);
+        palaaValikkoon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                luoKomponentit();
+                CardLayout cl = (CardLayout) (Kayttoliittyma.palautaCardLayout().getLayout()); // (CardLayout) (cards.getLayout());
+                cl.show(palautaCardLayout(), VALIKKOPANEL);
+            }
+        });
         
 // TENTTI        
         

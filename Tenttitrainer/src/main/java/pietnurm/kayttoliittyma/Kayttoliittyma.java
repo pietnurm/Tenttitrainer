@@ -28,8 +28,8 @@ import javax.swing.WindowConstants;
  */
 public class Kayttoliittyma implements Runnable {
     private JFrame frame;
-    private JPanel cards;
-    private final static String VALIKKOPANEL = "valikko";
+    public JPanel cards;
+    public final static String VALIKKOPANEL = "valikko";
     private final static String EDITPANEL = "kysymyseditori";
     private final static String TENTTIVALIKKO = "tenttivalikko";
 
@@ -57,7 +57,7 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
-    private void luoKomponentit() throws IOException {
+    public void luoKomponentit() throws IOException {
         
         // luo paavalikon
         JPanel valikko = new JPanel(new GridLayout(5, 1));
@@ -97,6 +97,8 @@ public class Kayttoliittyma implements Runnable {
         valikko.add(tulokset);
         
         // luo paapaneelin, joka pitaa sisallaan kaikki muut
+        
+        
         this.cards = new JPanel(new CardLayout());
         
         Kysymyseditori editori = new Kysymyseditori();
@@ -108,6 +110,9 @@ public class Kayttoliittyma implements Runnable {
         cards.add(editPanel, EDITPANEL);
         cards.add(tenttivalikko, TENTTIVALIKKO);
         
+    }
+    public JPanel palautaCardLayout() {
+        return this.cards;
     }
         
         
