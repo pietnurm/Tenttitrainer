@@ -5,6 +5,9 @@
  */
 package pietnurm.logiikka;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import pietnurm.logiikka.Alakategoria;
@@ -138,15 +141,22 @@ public class Testi {
      * Metodi lisaa testin pistesaldoon parametrina annetun kokonaisluvun.
      * @param arvostelu 
      */
-    public void arvostele(int arvostelu) {
+    public void arvostele(int arvostelu) throws IOException {
         this.pistesaldo = pistesaldo + arvostelu;
+        String arvosteltavaKategoria = "";
         String kysymys = kysymyslista.get(kysymysIndex - 1).haeKysymys();
         ArrayList<Kategoria> kategorialista = kysymysvarasto.palautaKategoriat();
         for (int i = 0; i < kategorialista.size(); i++) {
-            Scanner scanner = new Scanner()
+            Kategoria kateg = kategorialista.get(i);
+            for (int j = 0; j < kateg.palautaKysymykset().size(); j++) {
+                Kysymys kysym = kateg.palautaKysymykset().get(j);
+                if (kysym.haeKysymys().equals(kysymys)) {
+                    arvosteltavaKategoria = kateg.palautaKategorianNimi();
+                    break;
+                }
+            }
         }
-        
-        tallennaArvostelu(arvostelu, kategorianNimi);
+        tallennaArvostelu(arvostelu, arvosteltavaKategoria);
     }
     public int palautaPistesaldo() {
         return this.pistesaldo;
@@ -163,7 +173,12 @@ public class Testi {
             return keskiarvo;
         } 
     }
-    public void tallennaArvostelu(int arvostelu, String kategoria) {
-        
+    public void tallennaArvostelu(int arvostelu, String kategoria) throws IOException {
+        String tiedostonimi = "pisteet_" + kategoria + ".txt";
+        File kategorianPisteet = new File(tiedostonimi);
+        FileWriter pisteidenkirjoittaja = new FileWriter(tiedostonimi, true);
+        pisteidenkirjoittaja.write("" + arvostelu);
+        pisteidenkirjoittaja.write(System.getProperty("line.separator"));
+        pisteidenkirjoittaja.close();
     }
 }

@@ -12,6 +12,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -77,6 +79,8 @@ public class Tenttinakyma {
         tentiKaikki.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                testaaKaikki = new Testi(kysymysvarasto);
+                testaaKaikki.luoKysymyslista();
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 cl.show(cards, TENTTI);
             }
@@ -198,11 +202,19 @@ public class Tenttinakyma {
             public void actionPerformed(ActionEvent ae) {
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 if (testaaKaikki.esitaKysymys().equals("Testi on päättynyt.")) {
-                    testaaKaikki.arvostele(arviointiSlider.getValue());
+                    try {
+                        testaaKaikki.arvostele(arviointiSlider.getValue());
+                    } catch (IOException ex) {
+                        Logger.getLogger(Tenttinakyma.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     keskiarvo.setText(new String(String.format("%.1f", testaaKaikki.testinKeskiarvo())));
                     cl.show(cards, LOPETUSRUUTU);
                 } else {
-                    testaaKaikki.arvostele(arviointiSlider.getValue());
+                    try {
+                        testaaKaikki.arvostele(arviointiSlider.getValue());
+                    } catch (IOException ex) {
+                        Logger.getLogger(Tenttinakyma.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     kysymys.setText(testaaKaikki.esitaKysymys());
                     vastaus.setText("VASTAUKSESI: ");
                     cl.show(cards, TENTTI);

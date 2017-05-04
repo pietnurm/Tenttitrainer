@@ -88,13 +88,13 @@ public class TestiTest {
         assertFalse(eka.equals(toka));
     }
     @Test
-    public void arvosteluKasvattaaPistesaldoa() {
+    public void arvosteluKasvattaaPistesaldoa() throws IOException {
         testaaKaikki.arvostele(5);
         testaaKaikki.arvostele(3);
         assertEquals(8, testaaKaikki.palautaPistesaldo());
     }
     @Test
-    public void keskiarvoLaskettuOikein() {
+    public void keskiarvoLaskettuOikein() throws IOException {
         testaaKaikki.luoKysymyslista();
         testaaKaikki.esitaMallivastaus();
         testaaKaikki.arvostele(5);
