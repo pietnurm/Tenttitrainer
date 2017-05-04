@@ -140,6 +140,7 @@ public class Testi {
     /**
      * Metodi lisaa testin pistesaldoon parametrina annetun kokonaisluvun.
      * @param arvostelu 
+     * @throws java.io.IOException 
      */
     public void arvostele(int arvostelu) throws IOException {
         this.pistesaldo = pistesaldo + arvostelu;

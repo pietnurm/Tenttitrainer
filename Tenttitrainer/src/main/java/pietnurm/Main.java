@@ -14,6 +14,7 @@ import pietnurm.logiikka.Kategoria;
 import pietnurm.logiikka.Kysymys;
 import pietnurm.logiikka.Testi;
 import pietnurm.logiikka.Kysymysvarasto;
+import pietnurm.logiikka.Tulosarkisto;
 
 /**
  * Ohjelman paaluokka.
@@ -26,10 +27,18 @@ public class Main {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
+        
         Kysymysvarasto kysymysvarasto = new Kysymysvarasto();
         kysymysvarasto.haeTallennetutKategoriat();
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
         SwingUtilities.invokeLater(kayttoliittyma);
+        
+        
+        Tulosarkisto arkisto = new Tulosarkisto();
+//        System.out.println(arkisto.kategorianPisteet("kurssi1"));
+//        System.out.println(arkisto.kysymystenMaara("kurssi1"));
+//        System.out.println(arkisto.kategorianKeskiarvo("kurssi1"));
+//        System.out.println(arkisto.kokonaiskeskiarvo());
         
         Kysymys kysymys1 = new Kysymys("Kumpi voitti?", "No Kampi tietysti.");
         Kysymys kysymys2 = new Kysymys("Kumpi hävisi?", "No Kumpi tietysti.");
@@ -66,11 +75,11 @@ public class Main {
 //        alakategoriat.add(alakategoria);
 //        alakategoriat.add(alakategoria2);
         
-        ArrayList<Kysymys> lista = kysymysvarasto.palautaKaikkiKysymykset();
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println(lista.get(i).haeKysymys());
-            System.out.println(lista.get(i).haeMallivastaus());
-        }    
+//        ArrayList<Kysymys> lista = kysymysvarasto.palautaKaikkiKysymykset();
+//        for (int i = 0; i < lista.size(); i++) {
+//            System.out.println(lista.get(i).haeKysymys());
+//            System.out.println(lista.get(i).haeMallivastaus());
+//        }    
 //        
 //        kysymys1.annaAlakategoria("alakategoria1");
 //        kysymys2.annaAlakategoria("alakategoria1");
