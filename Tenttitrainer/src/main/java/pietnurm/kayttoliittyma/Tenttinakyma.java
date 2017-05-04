@@ -23,6 +23,7 @@ import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import pietnurm.logiikka.Kysymysvarasto;
 import pietnurm.logiikka.Testi;
 
@@ -30,7 +31,7 @@ import pietnurm.logiikka.Testi;
  * Luokka tenttinakyman luomiseen ja paivittamiseen.
  * @author pieta
  */
-public class Tenttinakyma extends Kayttoliittyma {
+public class Tenttinakyma {
 //    private JPanel kayttoliittymaLayout;
     private Kysymysvarasto kysymysvarasto;
     private Testi testaaKaikki;
@@ -59,7 +60,7 @@ public class Tenttinakyma extends Kayttoliittyma {
 //        testaaKaikki.luoKysymyslista();
         luoKomponentit();
         
-        this.cards = super(cards); //new JPanel(new CardLayout());
+        this.cards = new JPanel(new CardLayout());
         cards.add(tenttivalikko, TENTTIVALIKKO);
         cards.add(tentti, TENTTI);
         cards.add(mallivastaus, MALLIVASTAUS);
@@ -101,9 +102,13 @@ public class Tenttinakyma extends Kayttoliittyma {
         palaaValikkoon.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                luoKomponentit();
-                CardLayout cl = (CardLayout) (Kayttoliittyma.palautaCardLayout().getLayout()); // (CardLayout) (cards.getLayout());
-                cl.show(palautaCardLayout(), VALIKKOPANEL);
+                
+                //Kayttoliittyma gui = new Kayttoliittyma();
+                //SwingUtilities.invokeLater(Main.kayttoliittyma);
+                
+//                luoKomponentit();
+//                CardLayout cl = (CardLayout) (Kayttoliittyma.palautaCardLayout().getLayout()); // (CardLayout) (cards.getLayout());
+//                cl.show(palautaCardLayout(), VALIKKOPANEL);
             }
         });
         
