@@ -15,3 +15,5 @@ Päivä | Tunnit | Kuvaus
 18.04.2017 | 1h | Uusi luokkakaavio, javadoc-raportti
 19.04.2017 | 2,5h | Sekvenssikaaviot
 26.04.2017 | 3h | Tenttinäkymän toiminnallisuutta ja käyttöliittymää
+03.05.2017 | 3,5h | Tenttinäkymä, arvosteleminen
+04.05.2017 | 12h | Sovelluslogiikkaa, käyttöliittymää, korjailua 
