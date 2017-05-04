@@ -126,18 +126,38 @@ public class Kayttoliittyma implements Runnable {
         keskiarvot.setBackground(new Color(0xffffdd));
         keskiarvot.setFont(new Font("Rockwell", Font.PLAIN, 16));
 
-//        keskiarvot.setFont(new Font("Rockwell", Font.PLAIN, 150));
-//        tulospaneeli.add(keskiarvot);
         Tulosarkisto arkisto = new Tulosarkisto();
         String[] kolumnit = {"Kategoria", "Keskiarvo", "Vastattuja kysymyksiä"};
         JTable tulostaulukko = new JTable(arkisto.tulosdata(), kolumnit);
-        tulostaulukko.setBackground(new Color(0xffffff));
+        tulostaulukko.setBackground(new Color(0xffffdd));
         tulostaulukko.setFont(new Font("Calibri", Font.PLAIN, 13));
         
         JScrollPane kaLuettelo = new JScrollPane(tulostaulukko);
-        kaLuettelo.setBackground(new Color(0xffffdd));
-//        kaLuettelo.setFont(new Font("Rockwell", Font.PLAIN, 15));
+        kaLuettelo.getViewport().setBackground(tulostaulukko.getBackground());
         tulospaneeli.add(kaLuettelo);
+        
+        JPanel alapalkki = new JPanel(new GridLayout(2,1));
+        alapalkki.setBackground(new Color(0xffffff));
+        
+        JLabel kokonaiskeskiarvo = new JLabel("Kokonaiskeskiarvo: " + String.format("%.2f", arkisto.kokonaiskeskiarvo()), SwingConstants.CENTER);
+        kokonaiskeskiarvo.setFont(new Font("Rockwell", Font.PLAIN, 17));
+        alapalkki.add(kokonaiskeskiarvo);
+        
+        JButton paavalikkoon = new JButton("Takaisin valikkoon");
+        paavalikkoon.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        paavalikkoon.setBackground(new Color(0xffffdd));
+        paavalikkoon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                CardLayout cl = (CardLayout) (cards.getLayout());
+                cl.show(cards, VALIKKOPANEL);
+            }
+        });
+        alapalkki.add(paavalikkoon);
+        
+        tulospaneeli.add(alapalkki);
+        
+        
        
         
         // luo paapaneelin, joka pitaa sisallaan kaikki muut
