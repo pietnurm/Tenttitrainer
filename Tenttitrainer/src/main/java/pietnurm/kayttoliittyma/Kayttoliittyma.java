@@ -22,8 +22,10 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import pietnurm.logiikka.Tulosarkisto;
 /**
@@ -136,12 +138,39 @@ public class Kayttoliittyma implements Runnable {
         kaLuettelo.getViewport().setBackground(tulostaulukko.getBackground());
         tulospaneeli.add(kaLuettelo);
         
-        JPanel alapalkki = new JPanel(new GridLayout(2,1));
+        JPanel alapalkki = new JPanel(new GridLayout(4,1));
         alapalkki.setBackground(new Color(0xffffff));
         
         JLabel kokonaiskeskiarvo = new JLabel("Kokonaiskeskiarvo: " + String.format("%.2f", arkisto.kokonaiskeskiarvo()), SwingConstants.CENTER);
         kokonaiskeskiarvo.setFont(new Font("Rockwell", Font.PLAIN, 17));
         alapalkki.add(kokonaiskeskiarvo);
+        
+//        JTextArea poistettava = new JTextArea();
+//        poistettava.setFont(new Font("Calibri", Font.PLAIN, 16));
+//        poistettava.setBackground(new Color(0xffffff));
+//        
+//        
+//        JButton tyhjennaKategorianTulokset = new JButton("Syötä nollattava kategoria"); 
+//        tyhjennaKategorianTulokset.setFont(new Font("Rockwell", Font.PLAIN, 16));
+//        tyhjennaKategorianTulokset.setBackground(new Color(0xffffdd));
+//        tyhjennaKategorianTulokset.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//                String poistokategoria = poistettava.getText();
+//                try {
+//                    arkisto.poistaTulokset(poistokategoria);
+//                } catch (IOException ex) {
+//                    Logger.getLogger(Kayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                poistettava.setText("");
+//                frame.dispose();
+//                
+//                CardLayout cl = (CardLayout) (cards.getLayout());
+//                cl.show(cards, TULOKSET);
+//            }
+//        });
+//        alapalkki.add(tyhjennaKategorianTulokset);
+//        alapalkki.add(poistettava);
         
         JButton paavalikkoon = new JButton("Takaisin valikkoon");
         paavalikkoon.setFont(new Font("Rockwell", Font.PLAIN, 20));

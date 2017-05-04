@@ -85,9 +85,16 @@ public class Tulosarkisto {
         }
         return tulosdata;
     }
-    public void poistaTulokset(String kategorianNimi) throws IOException {
-        FileWriter tulostenPoistaja = new FileWriter("pisteet_" + kategorianNimi + ".txt");
-        tulostenPoistaja.write("");
-        tulostenPoistaja.close();
-    }
+//    public void poistaTulokset(String kategorianNimi) throws IOException {
+//        Scanner kategoriaskanneri = new Scanner(new File("kategorialista.txt"));
+//        while (kategoriaskanneri.hasNextLine()) {
+//            String kategoria = kategoriaskanneri.nextLine();
+//            if (kategoria.equals(kategorianNimi)) {
+//                FileWriter tulostenPoistaja = new FileWriter("pisteet_" + kategorianNimi + ".txt");
+//                tulostenPoistaja.write("");
+//                tulostenPoistaja.close();
+//            }
+//        }    
+//        
+//    }
 }
