@@ -7,6 +7,8 @@ package pietnurm.logiikka;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -76,13 +78,16 @@ public class Tulosarkisto {
             }    
         }
         Object[][] tulosdata = new Object[kategoriat.size()][3];
-        System.out.println(kategoriat.size());
-        System.out.println(keskiarvot.size());
         for (int i = 0; i < 1; i++) {
             tulosdata[i][0] = kategoriat.get(i);
             tulosdata[i][1] = keskiarvot.get(i);
             tulosdata[i][2] = kysymysmaarat.get(i);
         }
         return tulosdata;
+    }
+    public void poistaTulokset(String kategorianNimi) throws IOException {
+        FileWriter tulostenPoistaja = new FileWriter("pisteet_" + kategorianNimi + ".txt");
+        tulostenPoistaja.write("");
+        tulostenPoistaja.close();
     }
 }

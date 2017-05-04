@@ -98,11 +98,12 @@ public class Kategoria {
         return this.nimi;
     }
     /**
-     * Lisaa kysymyksen kategoriaan.
+     * Lisaa kysymyksen kategoriaan. TARVIIKO TÄTÄ OLLENKAAN JOS KAIKKI KYSYMYKSET LIITETÄÄN KATEGORIAAN HAE TALLENNETUT-TOIMINNOLLA?
      * @param kysymys 
      */
     public void lisaaKysymys(Kysymys kysymys) {
         kysymykset.add(kysymys);
+        
     }
     /**
      * Poistaa kysymyksen kategoriasta. 

@@ -165,13 +165,13 @@ public class Kayttoliittyma implements Runnable {
         
         this.cards = new JPanel(new CardLayout());
         
-//        Kysymyseditori editori = new Kysymyseditori();
-        Tenttinakyma tenttinakyma = new Tenttinakyma();
-//        JPanel editPanel = editori.luo();
+        Kysymyseditori editori = new Kysymyseditori(this);
+        Tenttinakyma tenttinakyma = new Tenttinakyma(this);
+        JPanel editPanel = editori.luo();
         JPanel tenttivalikko = tenttinakyma.luo();
         
         cards.add(valikko, VALIKKOPANEL);
-//        cards.add(editPanel, EDITPANEL);
+        cards.add(editPanel, EDITPANEL);
         cards.add(tenttivalikko, TENTTIVALIKKO);
         cards.add(tulospaneeli, TULOKSET);
         

@@ -30,8 +30,16 @@ public class Main {
         
         Kysymysvarasto kysymysvarasto = new Kysymysvarasto();
         kysymysvarasto.haeTallennetutKategoriat();
+        
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
-        SwingUtilities.invokeLater(kayttoliittyma);
+        SwingUtilities.invokeLater(kayttoliittyma); 
+        
+//            public void run(String[] args) throws IOException {
+//            Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+//            SwingUtilities.invokeLater(kayttoliittyma); 
+//        }
+        
+        
         
         
         Tulosarkisto arkisto = new Tulosarkisto();
@@ -112,5 +120,5 @@ public class Main {
         
         
     }
-    
+
 }

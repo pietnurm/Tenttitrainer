@@ -5,6 +5,10 @@
  */
 package pietnurm.logiikka;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
  * Luokka yksittäiselle kysymykselle ja sen mallivastaukselle.
  * LISAA TOIMINNALLISUUS AUTOMAATTISEEN TIEDOSTOON TALLENTAMISEEN JA POISTAMISEEN!
@@ -24,6 +28,29 @@ public class Kysymys {
      * Metodi muuttaa kysymyksen sisällön parametrin arvon mukaiseksi.
      * @param uusiKysymys 
      */
+    public void tallennaKysymys(String kategoria) throws IOException {
+        String kysymystiedosto = "kysymykset_" + kategoria + ".txt";
+        String mallivastaustiedosto = "mallivastaukset_" + kategoria + ".txt";
+        FileWriter kysymyskirjoittaja = new FileWriter(kysymystiedosto, true);
+        FileWriter mallivastauskirjoittaja = new FileWriter(mallivastaustiedosto, true);
+        Scanner kysymyslukija = new Scanner(kysymystiedosto);
+        boolean onkoDuplikaatti = false;
+        while (kysymyslukija.hasNextLine()) {
+            String kyssari = kysymyslukija.nextLine();
+            if (kyssari.equals(this.kysymys)) {
+                onkoDuplikaatti = true;
+            }
+        }
+        if (onkoDuplikaatti = false) {
+            kysymyskirjoittaja.write(this.kysymys);
+            kysymyskirjoittaja.write(System.getProperty("line.separator"));
+            mallivastauskirjoittaja.write(this.mallivastaus);
+            mallivastauskirjoittaja.write(System.getProperty("line.separator"));
+        }
+        kysymyskirjoittaja.close();
+        mallivastauskirjoittaja.close();
+    }
+    
     public void muokkaaKysymysta(String uusiKysymys) {
         this.kysymys = uusiKysymys;
     }

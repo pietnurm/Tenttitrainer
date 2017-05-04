@@ -5,6 +5,7 @@
  */
 package pietnurm.kayttoliittyma;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -17,33 +18,46 @@ import javax.swing.SwingConstants;
  * Luokka kysymyseditorinakyman luomiseen.
  * @author pieta
  */
-public class Kysymyseditori extends Card { // extends JPanel {
-//    JPanel kysymyseditori;
+public class Kysymyseditori {
+    Kayttoliittyma kayttoliittyma;
+    private JPanel cards;
+    private JPanel kysymyseditori;
+    private final static String KYSYMYSEDITORI = "kysymyseditori";
     
-    public Kysymyseditori(String nimi) {
-        super(nimi);
+    public Kysymyseditori(Kayttoliittyma kayttoliittyma) {
+        this.kayttoliittyma = kayttoliittyma;
         
-        JPanel valikko = new JPanel(new GridLayout(5, 1));
+    }
+    
+    public JPanel luo() {
+        luoKomponentit();
+        this.cards = new JPanel(new CardLayout());
+        cards.add(kysymyseditori, KYSYMYSEDITORI);
+        
+        return cards;
+    }    
+    public void luoKomponentit() {    
+        this.kysymyseditori = new JPanel(new GridLayout(5, 1));
         
         JLabel otsikko = new JLabel("Luo kysymyksiä", SwingConstants.CENTER);
         otsikko.setFont(new Font("Rockwell", Font.PLAIN, 36));
-        valikko.setBackground(new Color(0xffffff));
-        valikko.add(otsikko);
+        kysymyseditori.setBackground(new Color(0xffffff));
+        kysymyseditori.add(otsikko);
         
         JButton luo = new JButton("Luo kysymyksiä");
         luo.setFont(new Font("Rockwell", Font.PLAIN, 20));
         luo.setBackground(new Color(0xffffdd));
-        valikko.add(luo);
+        kysymyseditori.add(luo);
         
         JButton testaa = new JButton("Testaa itseäsi");
         testaa.setFont(new Font("Rockwell", Font.PLAIN, 20));
         testaa.setBackground(new Color(0xffffff));
-        valikko.add(testaa);
+        kysymyseditori.add(testaa);
         
         JButton tulokset = new JButton("Tulokset");
         tulokset.setFont(new Font("Rockwell", Font.PLAIN, 20));
         tulokset.setBackground(new Color(0xffffdd));
-        valikko.add(tulokset);
+        kysymyseditori.add(tulokset);
         
     }
 //    public JPanel luo() {
