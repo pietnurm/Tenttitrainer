@@ -17,3 +17,4 @@ Päivä | Tunnit | Kuvaus
 26.04.2017 | 3h | Tenttinäkymän toiminnallisuutta ja käyttöliittymää
 03.05.2017 | 3,5h | Tenttinäkymä, arvosteleminen
 04.05.2017 | 12h | Sovelluslogiikkaa, käyttöliittymää, korjailua 
+06.05.2017 | 3h | Kysymyseditorin käyttöliittymää ja toiminnallisuutta
