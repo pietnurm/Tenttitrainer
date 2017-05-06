@@ -37,14 +37,14 @@ public class Kysymyseditori {
         
     }
     
-    public JPanel luo() {
+    public JPanel luo() throws IOException {
         luoKomponentit();
         this.cards = new JPanel(new CardLayout());
         cards.add(kysymyseditori, KYSYMYSEDITORI);
         
         return cards;
     }    
-    public void luoKomponentit() {    
+    public void luoKomponentit() throws IOException {    
         this.kysymyseditori = new JPanel(new GridLayout(5, 1));
         
         JLabel otsikko = new JLabel("Luo kysymyksiä", SwingConstants.CENTER);
@@ -83,8 +83,19 @@ public class Kysymyseditori {
         kysymyseditori.add(mallivastauspaneeli);
         
         // kategoriavalitsin 
+        JPanel valitsinpaneeli = new JPanel();
+        valitsinpaneeli.setBackground(new Color(0xffffff));
+        
+        JLabel valitseKategoria = new JLabel("Valitse kysymykselle kategoria", SwingConstants.CENTER);
+        valitseKategoria.setFont(new Font("Rockwell", Font.PLAIN, 18));
+        valitseKategoria.setBackground(new Color(0xffffdd));
+        valitsinpaneeli.add(valitseKategoria);
+        
         Kategoriavalitsin valitsin = new Kategoriavalitsin();
-        kysymyseditori.add(valitsin.palautaValitsin());
+        valitsin.init();
+        valitsinpaneeli.add(valitsin.palautaValitsin());
+        
+        kysymyseditori.add(valitsinpaneeli);
         
         JPanel alapalkki = new JPanel();
         alapalkki.setBackground(new Color(0xffffff));
