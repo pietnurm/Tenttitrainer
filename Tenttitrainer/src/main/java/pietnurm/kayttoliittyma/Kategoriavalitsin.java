@@ -87,5 +87,8 @@ public class Kategoriavalitsin {
     public JPanel palautaValitsin() {
         return valitsinpaneeli;
     }
+    public String palautaKategoria() {
+        return t.getText();
+    }
 
 }
