@@ -5,6 +5,7 @@
  */
 package pietnurm.logiikka;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -33,19 +34,25 @@ public class Kysymys {
         String mallivastaustiedosto = "mallivastaukset_" + kategoria + ".txt";
         FileWriter kysymyskirjoittaja = new FileWriter(kysymystiedosto, true);
         FileWriter mallivastauskirjoittaja = new FileWriter(mallivastaustiedosto, true);
-        Scanner kysymyslukija = new Scanner(kysymystiedosto);
+        Scanner kysymyslukija = new Scanner(new File(kysymystiedosto));
         boolean onkoDuplikaatti = false;
-        while (kysymyslukija.hasNextLine()) {
-            String kyssari = kysymyslukija.nextLine();
-            if (kyssari.equals(this.kysymys)) {
-                onkoDuplikaatti = true;
+        if (kysymyslukija.hasNext()) {
+            while (kysymyslukija.hasNextLine()) {
+                String kyssari = kysymyslukija.nextLine();
+                System.out.println(kyssari);
+                if (kyssari.equals(this.kysymys)) {
+                    onkoDuplikaatti = true;     
+                }
             }
         }
-        if (onkoDuplikaatti = false) {
+        
+        if (onkoDuplikaatti == false) {
             kysymyskirjoittaja.write(this.kysymys);
             kysymyskirjoittaja.write(System.getProperty("line.separator"));
             mallivastauskirjoittaja.write(this.mallivastaus);
             mallivastauskirjoittaja.write(System.getProperty("line.separator"));
+        } else {
+            System.out.println("Tämä kysymys on jo tallennettu");
         }
         kysymyskirjoittaja.close();
         mallivastauskirjoittaja.close();

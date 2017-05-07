@@ -12,11 +12,14 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import pietnurm.logiikka.Kysymys;
 import pietnurm.logiikka.Kysymysvarasto;
 
 /**
@@ -100,10 +103,30 @@ public class Kysymyseditori {
         JPanel alapalkki = new JPanel();
         alapalkki.setBackground(new Color(0xffffff));
         
-        JButton luo = new JButton("Tallenna kysymys");
-        luo.setFont(new Font("Rockwell", Font.PLAIN, 20));
-        luo.setBackground(new Color(0xffffdd));
-        alapalkki.add(luo);
+        JButton tallennaKysymys = new JButton("Tallenna kysymys");
+        tallennaKysymys.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        tallennaKysymys.setBackground(new Color(0xffffdd));
+        tallennaKysymys.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String kysymysText = kysymys.getText();
+                String mallivastausText = mallivastaus.getText();
+                String kategoriaText = valitsin.palautaKategoria();
+                if (!(kysymysText.equals("") || mallivastausText.equals("") || kategoriaText.equals(""))) {
+                    Kysymys kyssari = new Kysymys(kysymysText, mallivastausText);
+                    try {
+                        kyssari.tallennaKysymys(kategoriaText);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Kysymyseditori.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    kysymys.setText("Kysymys tallennettu.");
+                    mallivastaus.setText("");
+                } else {
+                    kysymys.setText("Syötä kysymys ja mallivastaus ja valitse kategoria ennen tallentamista");
+                }
+            }
+        });
+        alapalkki.add(tallennaKysymys);
         
         
         JButton palaaValikkoon = new JButton("Takaisin valikkoon");
