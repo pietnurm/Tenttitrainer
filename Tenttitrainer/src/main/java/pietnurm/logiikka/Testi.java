@@ -10,8 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import pietnurm.logiikka.Alakategoria;
-import pietnurm.logiikka.Kategoria;
 
 /**
  * Luokka, joka tenttii kayttajalta taman valitsemia kysymyksia.

@@ -9,9 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -98,7 +96,8 @@ public class Kategoria {
         return this.nimi;
     }
     /**
-     * Lisaa kysymyksen kategoriaan. TARVIIKO TÄTÄ OLLENKAAN JOS KAIKKI KYSYMYKSET LIITETÄÄN KATEGORIAAN HAE TALLENNETUT-TOIMINNOLLA?
+     * Lisaa kysymyksen kategoriaan. 
+     * TURHA METODI: KAIKKI KYSYMYKSET LIITETÄÄN KATEGORIAAN HAE TALLENNETUT-TOIMINNOLLA.
      * @param kysymys 
      */
     public void lisaaKysymys(Kysymys kysymys) {
@@ -107,7 +106,7 @@ public class Kategoria {
     }
     /**
      * Poistaa kysymyksen kategoriasta. 
-     * HUOM!! MUISTA POISTAA MYOS KYSYMYS- JA MALLIVASTAUSLISTOILTA!!
+     * HUOM!! EI POISTA VIELÄ KYSYMYS- EIKÄ MALLIVASTAUSLISTOILTA!!
      * @param kysymys 
      */
     public void poistaKysymys(Kysymys kysymys) {

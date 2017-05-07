@@ -14,21 +14,15 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import pietnurm.logiikka.Kategoria;
 import pietnurm.logiikka.Kysymysvarasto;
 import pietnurm.logiikka.Testi;
-//import sun.security.tools.keytool.Main;
 
 /**
  * Luokka tenttinakyman luomiseen ja paivittamiseen.
@@ -56,12 +50,9 @@ public class Tenttinakyma {
         tenttaa = new Testi(kysymysvarasto);
         tenttaa.luoKysymyslista();
 
-//        this.testi = new Testi(kysymysvarasto);
     }
     
     public JPanel luo() throws IOException {
-//        testaaKaikki = new Testi(kysymysvarasto);
-//        testaaKaikki.luoKysymyslista();
         luoKomponentit();
         
         this.cards = new JPanel(new CardLayout());

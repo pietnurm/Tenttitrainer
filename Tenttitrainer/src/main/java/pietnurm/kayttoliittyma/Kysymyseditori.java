@@ -142,29 +142,4 @@ public class Kysymyseditori {
         });
         kysymyseditori.add(alapalkki);
     }
-//    public JPanel luo() {
-//        JPanel valikko = new JPanel(new GridLayout(5, 1));
-//        
-//        JLabel otsikko = new JLabel("Luo kysymyksiä", SwingConstants.CENTER);
-//        otsikko.setFont(new Font("Rockwell", Font.PLAIN, 36));
-//        valikko.setBackground(new Color(0xffffff));
-//        valikko.add(otsikko);
-//        
-//        JButton luo = new JButton("Luo kysymyksiä");
-//        luo.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        luo.setBackground(new Color(0xffffdd));
-//        valikko.add(luo);
-//        
-//        JButton testaa = new JButton("Testaa itseäsi");
-//        testaa.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        testaa.setBackground(new Color(0xffffff));
-//        valikko.add(testaa);
-//        
-//        JButton tulokset = new JButton("Tulokset");
-//        tulokset.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        tulokset.setBackground(new Color(0xffffdd));
-//        valikko.add(tulokset);
-//        
-//        return valikko;
-//    }
 }

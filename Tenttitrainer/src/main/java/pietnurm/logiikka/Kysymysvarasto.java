@@ -7,7 +7,6 @@ package pietnurm.logiikka;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -35,7 +34,6 @@ public class Kysymysvarasto {
             while (scanner.hasNextLine()) {
                 String nimi = scanner.nextLine();
                 Kategoria kategoria = new Kategoria(nimi);
-//                kategoria.haeTallennetutKysymykset(); // lisaaKategoria toteuttaa jo tämän!
                 lisaaKategoria(kategoria);
             }
         } catch (FileNotFoundException e) {
@@ -46,7 +44,7 @@ public class Kysymysvarasto {
         kategoria.haeTallennetutKysymykset();
         this.kaikkiKategoriat.add(kategoria);
     }
-    // MUISTA POISTAA MYÖS KATEGORIALISTA-FILESTA
+    // TÄMÄ EI POISTA KATEGORIALISTA-TIEDOSTOSTA!
     public void poistaKategoria(Kategoria kategoria) {
         for (int i = 0; i < kaikkiKategoriat.size(); i++) {
             if (kaikkiKategoriat.get(i).equals(kategoria)) {
