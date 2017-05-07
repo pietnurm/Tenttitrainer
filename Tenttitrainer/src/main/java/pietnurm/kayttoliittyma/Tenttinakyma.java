@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -26,7 +27,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import pietnurm.logiikka.Kysymysvarasto;
 import pietnurm.logiikka.Testi;
-import sun.security.tools.keytool.Main;
+//import sun.security.tools.keytool.Main;
 
 /**
  * Luokka tenttinakyman luomiseen ja paivittamiseen.
@@ -70,7 +71,7 @@ public class Tenttinakyma {
         
         return cards;
     }
-    public void luoKomponentit() {
+    public void luoKomponentit() throws IOException {
         this.tenttivalikko = new JPanel(new GridLayout(5, 1));
         
         JLabel otsikko = new JLabel("Testaa tietosi", SwingConstants.CENTER);
@@ -92,10 +93,29 @@ public class Tenttinakyma {
             }
         });
         
-        JButton testaa = new JButton("");
-        testaa.setFont(new Font("Rockwell", Font.PLAIN, 20));
-        testaa.setBackground(new Color(0xffffff));
-        tenttivalikko.add(testaa);
+        JPanel keskipaneeli = new JPanel(new GridLayout(2, 1));
+        keskipaneeli.setBackground(new Color(0xffffff));
+        
+        Kategoriavalitsin kategoriavalitsin = new Kategoriavalitsin();
+        kategoriavalitsin.initPelkistetty();
+        JPanel valitsin = kategoriavalitsin.palautaValitsin();
+        
+        JButton tentiKategoria = new JButton("Tenttaa valitsemastasi kategoriasta");
+        tentiKategoria.setFont(new Font("Rockwell", Font.PLAIN, 20));
+        tentiKategoria.setBackground(new Color(0xffffff));
+        tentiKategoria.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+//                testaaKaikki = new Testi(kysymysvarasto, kategoriavalitsin.palautaKategoria());
+//                testaaKaikki.luoKysymyslista();
+//                CardLayout cl = (CardLayout) (cards.getLayout());
+//                cl.show(cards, TENTTI);
+            }
+        });
+        
+        keskipaneeli.add(tentiKategoria);
+        keskipaneeli.add(valitsin);   
+        tenttivalikko.add(keskipaneeli);
         
         JButton palaaValikkoon = new JButton("Takaisin valikkoon");
         palaaValikkoon.setFont(new Font("Rockwell", Font.PLAIN, 20));
