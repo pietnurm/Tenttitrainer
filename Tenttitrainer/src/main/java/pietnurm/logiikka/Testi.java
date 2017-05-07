@@ -50,7 +50,7 @@ public class Testi {
         this.kysymysvarasto = kysymysvarasto;
         this.kategoria = kategoria;
         this.alakategoriat = null;
-        this.kysymyslista = new ArrayList<>();
+//        this.kysymyslista = new ArrayList<>();
         this.kysymysIndex = 0;
         this.omaVastaus = "";
         this.pistesaldo = 0;

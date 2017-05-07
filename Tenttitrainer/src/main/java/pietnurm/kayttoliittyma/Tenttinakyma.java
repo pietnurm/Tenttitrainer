@@ -25,6 +25,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import pietnurm.logiikka.Kategoria;
 import pietnurm.logiikka.Kysymysvarasto;
 import pietnurm.logiikka.Testi;
 //import sun.security.tools.keytool.Main;
@@ -37,7 +38,7 @@ public class Tenttinakyma {
 //    private JPanel kayttoliittymaLayout;
     private Kayttoliittyma kayttoliittyma;
     private Kysymysvarasto kysymysvarasto;
-    private Testi testaaKaikki;
+    private Testi tenttaa;
     private JPanel cards;
     private JPanel tentti;
     private JPanel tenttivalikko;
@@ -52,8 +53,8 @@ public class Tenttinakyma {
         this.kayttoliittyma = kayttoliittyma;
         this.kysymysvarasto = new Kysymysvarasto();
         kysymysvarasto.haeTallennetutKategoriat();
-        testaaKaikki = new Testi(kysymysvarasto);
-        testaaKaikki.luoKysymyslista();
+        tenttaa = new Testi(kysymysvarasto);
+        tenttaa.luoKysymyslista();
 
 //        this.testi = new Testi(kysymysvarasto);
     }
@@ -86,8 +87,8 @@ public class Tenttinakyma {
         tentiKaikki.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                testaaKaikki = new Testi(kysymysvarasto);
-                testaaKaikki.luoKysymyslista();
+                tenttaa = new Testi(kysymysvarasto);
+                tenttaa.luoKysymyslista();
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 cl.show(cards, TENTTI);
             }
@@ -106,10 +107,18 @@ public class Tenttinakyma {
         tentiKategoria.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-//                testaaKaikki = new Testi(kysymysvarasto, kategoriavalitsin.palautaKategoria());
-//                testaaKaikki.luoKysymyslista();
-//                CardLayout cl = (CardLayout) (cards.getLayout());
-//                cl.show(cards, TENTTI);
+                String kategorianNimi = kategoriavalitsin.palautaKategoria();
+                Kategoria valittuKategoria;
+                try {
+                    valittuKategoria = new Kategoria(kategorianNimi);
+                    valittuKategoria.haeTallennetutKysymykset();
+                    tenttaa = new Testi(kysymysvarasto, valittuKategoria);
+                    tenttaa.luoKysymyslista();
+                    CardLayout cl = (CardLayout) (cards.getLayout());
+                    cl.show(cards, TENTTI);
+                } catch (IOException ex) {
+                    Logger.getLogger(Tenttinakyma.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
@@ -138,13 +147,13 @@ public class Tenttinakyma {
         tentti.add(otsikkoTentti);
         
         JLabel kysymys = new JLabel("", SwingConstants.CENTER);
-        kysymys.setText(testaaKaikki.esitaKysymys());
+        kysymys.setText(tenttaa.esitaKysymys());
         kysymys.setBackground(new Color(0xffffdd));
         kysymys.setFont(new Font("Calibri", Font.PLAIN, 16));
         tentti.add(kysymys);
         
         // luodaan mallivastaus-cardia varten
-        JLabel kysymysUudestaan = new JLabel(testaaKaikki.esitaKysymys(), SwingConstants.CENTER);
+        JLabel kysymysUudestaan = new JLabel(tenttaa.esitaKysymys(), SwingConstants.CENTER);
         kysymys.setBackground(new Color(0xffffdd));
         kysymys.setFont(new Font("Calibri", Font.PLAIN, 16));
         
@@ -173,8 +182,8 @@ public class Tenttinakyma {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 vastauksesi.setText(vastaus.getText());
-                kysymysUudestaan.setText(testaaKaikki.esitaKysymys());
-                mallivast.setText("<html>MALLIVASTAUS:<br>" + testaaKaikki.esitaMallivastaus() + "</html>");
+                kysymysUudestaan.setText(tenttaa.esitaKysymys());
+                mallivast.setText("<html>MALLIVASTAUS:<br>" + tenttaa.esitaMallivastaus() + "</html>");
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 cl.show(cards, MALLIVASTAUS);
             }
@@ -193,7 +202,7 @@ public class Tenttinakyma {
         lopetaTentti.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                keskiarvo.setText(new String(String.format("%.1f", testaaKaikki.testinKeskiarvo())));
+                keskiarvo.setText(new String(String.format("%.1f", tenttaa.testinKeskiarvo())));
                 CardLayout cl = (CardLayout) (cards.getLayout());
                 cl.show(cards, LOPETUSRUUTU);
             }
@@ -234,21 +243,21 @@ public class Tenttinakyma {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 CardLayout cl = (CardLayout) (cards.getLayout());
-                if (testaaKaikki.esitaKysymys().equals("Testi on päättynyt.")) {
+                if (tenttaa.esitaKysymys().equals("Testi on päättynyt.")) {
                     try {
-                        testaaKaikki.arvostele(arviointiSlider.getValue());
+                        tenttaa.arvostele(arviointiSlider.getValue());
                     } catch (IOException ex) {
                         Logger.getLogger(Tenttinakyma.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    keskiarvo.setText(new String(String.format("%.1f", testaaKaikki.testinKeskiarvo())));
+                    keskiarvo.setText(new String(String.format("%.1f", tenttaa.testinKeskiarvo())));
                     cl.show(cards, LOPETUSRUUTU);
                 } else {
                     try {
-                        testaaKaikki.arvostele(arviointiSlider.getValue());
+                        tenttaa.arvostele(arviointiSlider.getValue());
                     } catch (IOException ex) {
                         Logger.getLogger(Tenttinakyma.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    kysymys.setText(testaaKaikki.esitaKysymys());
+                    kysymys.setText(tenttaa.esitaKysymys());
                     vastaus.setText("VASTAUKSESI: ");
                     cl.show(cards, TENTTI);
                 }
