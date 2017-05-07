@@ -12,11 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import pietnurm.logiikka.Alakategoria;
-import pietnurm.logiikka.Kategoria;
-import pietnurm.logiikka.Kysymys;
-import pietnurm.logiikka.Kysymysvarasto;
-import pietnurm.logiikka.Testi;
+
 
 /**
  *

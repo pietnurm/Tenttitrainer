@@ -78,7 +78,7 @@ public class Tulosarkisto {
             }    
         }
         Object[][] tulosdata = new Object[kategoriat.size()][3];
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < kategoriat.size(); i++) {
             tulosdata[i][0] = kategoriat.get(i);
             tulosdata[i][1] = keskiarvot.get(i);
             tulosdata[i][2] = kysymysmaarat.get(i);

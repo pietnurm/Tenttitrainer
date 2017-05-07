@@ -1,7 +1,5 @@
-kurssi1kategoria1
-kategoria1
 kurssi1
+Kognitiotieteen klassikot
+kategoria1
 testikategoria1
 testikategoria2
-huikee kategoria
-
