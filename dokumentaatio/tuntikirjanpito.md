@@ -18,3 +18,4 @@ Päivä | Tunnit | Kuvaus
 03.05.2017 | 3,5h | Tenttinäkymä, arvosteleminen
 04.05.2017 | 12h | Sovelluslogiikkaa, käyttöliittymää, korjailua 
 06.05.2017 | 3h | Kysymyseditorin käyttöliittymää ja toiminnallisuutta
+07.05.2017 | 5,5h | Kategorian luominen, kategorian tenttaaminen, muun toiminnallisuuden viimeistely, koodin siistiminen.

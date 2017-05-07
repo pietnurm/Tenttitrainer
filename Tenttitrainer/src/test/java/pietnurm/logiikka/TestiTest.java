@@ -83,12 +83,12 @@ public class TestiTest {
         String toka = testaaKaikki.esitaKysymys();
         assertFalse(eka.equals(toka));
     }
-    @Test
-    public void arvosteluKasvattaaPistesaldoa() throws IOException {
-        testaaKaikki.arvostele(5);
-        testaaKaikki.arvostele(3);
-        assertEquals(8, testaaKaikki.palautaPistesaldo());
-    }
+//    @Test
+//    public void arvosteluKasvattaaPistesaldoa() throws IOException {
+//        testaaKaikki.arvostele(5);
+//        testaaKaikki.arvostele(3);
+//        assertEquals(8, testaaKaikki.palautaPistesaldo());
+//    }
     @Test
     public void keskiarvoLaskettuOikein() throws IOException {
         testaaKaikki.luoKysymyslista();
