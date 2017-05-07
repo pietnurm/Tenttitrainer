@@ -7,8 +7,6 @@ package pietnurm.logiikka;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -62,7 +60,6 @@ public class Tulosarkisto {
         return kokonaiskeskiarvo;
     }
     public Object[][] tulosdata() throws FileNotFoundException {
-        // tee kaks listaa ja iske ne objektiin. hashmappi ei taida toimii niin hyvin.
         ArrayList<String> kategoriat = new ArrayList<>();
         ArrayList<String> keskiarvot = new ArrayList<>();
         ArrayList<String> kysymysmaarat = new ArrayList<>();
@@ -85,6 +82,7 @@ public class Tulosarkisto {
         }
         return tulosdata;
     }
+//  TULOSTEN NOLLAAMISEN TOIMINNALLISUUTTA EI VIELÄ TUETA    
 //    public void poistaTulokset(String kategorianNimi) throws IOException {
 //        Scanner kategoriaskanneri = new Scanner(new File("kategorialista.txt"));
 //        while (kategoriaskanneri.hasNextLine()) {

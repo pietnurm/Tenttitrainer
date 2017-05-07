@@ -7,7 +7,6 @@ package pietnurm.kayttoliittyma;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -22,10 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import pietnurm.logiikka.Tulosarkisto;
 /**
@@ -53,7 +49,6 @@ public class Kayttoliittyma implements Runnable {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         try {
-            //        luoKomponentit(frame.getContentPane());
             luoKomponentit();
         } catch (IOException ex) {
             Logger.getLogger(Kayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
@@ -65,13 +60,7 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
-    public void luoKomponentit() throws IOException {
-        
-//        sisalto = new JPanel(new CardLayout());
-//        
-//        sisalto.add(new Kysymyseditori("editori"));
-        
-        
+    public void luoKomponentit() throws IOException {       
         // luo paavalikon
         JPanel valikko = new JPanel(new GridLayout(5, 1));
         valikko.setBackground(new Color(0xffffff));
@@ -145,6 +134,8 @@ public class Kayttoliittyma implements Runnable {
         kokonaiskeskiarvo.setFont(new Font("Rockwell", Font.PLAIN, 17));
         alapalkki.add(kokonaiskeskiarvo);
         
+//        TULOSTEN NOLLAAMISEN TOIMINNALLISUUTTA EI VIELA TUETA
+//        
 //        JTextArea poistettava = new JTextArea();
 //        poistettava.setFont(new Font("Calibri", Font.PLAIN, 16));
 //        poistettava.setBackground(new Color(0xffffff));
@@ -186,12 +177,7 @@ public class Kayttoliittyma implements Runnable {
         
         tulospaneeli.add(alapalkki);
         
-        
-       
-        
         // luo paapaneelin, joka pitaa sisallaan kaikki muut
-        
-        
         this.cards = new JPanel(new CardLayout());
         
         Kysymyseditori editori = new Kysymyseditori(this);
@@ -205,68 +191,6 @@ public class Kayttoliittyma implements Runnable {
         cards.add(tulospaneeli, TULOKSET);
         
     }
-    
-        
-        
-//    private void luoKomponentit(Container container) {
-//        GridLayout layout = new GridLayout(1,1);
-//        container.setLayout(layout);
-//       
-//        container.add(luoValikko());
-//        
-//    }
-//    private JPanel luoValikko() {
-//        JPanel valikko = new JPanel(new GridLayout(5, 1));
-//        
-//        JLabel otsikko = new JLabel("TENTTITRAINER", SwingConstants.CENTER);
-//        otsikko.setFont(new Font("Rockwell", Font.PLAIN, 36));
-//        valikko.setBackground(new Color(0xffffff));
-//        valikko.add(otsikko);
-//        
-//        JButton luo = new JButton("Luo kysymyksiä");
-//        luo.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        luo.setBackground(new Color(0xffffdd));
-////        luo.addActionListener(nappikuuntelijaKysymyseditori);
-//        valikko.add(luo);
-//        
-//        JButton testaa = new JButton("Testaa itseäsi");
-//        testaa.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        testaa.setBackground(new Color(0xffffff));
-//        valikko.add(testaa);
-//        
-//        JButton tulokset = new JButton("Tulokset");
-//        tulokset.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        tulokset.setBackground(new Color(0xffffdd));
-//        valikko.add(tulokset);
-//        
-//        return valikko;
-//    }
-//    private JPanel luoKysymyseditori() {
-//        JPanel valikko = new JPanel(new GridLayout(5, 1));
-//        
-//        JLabel otsikko = new JLabel("Luo kysymyksiä", SwingConstants.CENTER);
-//        otsikko.setFont(new Font("Rockwell", Font.PLAIN, 36));
-//        valikko.setBackground(new Color(0xffffff));
-//        valikko.add(otsikko);
-//        
-//        JButton luo = new JButton("Luo kysymyksiä");
-//        luo.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        luo.setBackground(new Color(0xffffdd));
-//        valikko.add(luo);
-//        
-//        JButton testaa = new JButton("Testaa itseäsi");
-//        testaa.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        testaa.setBackground(new Color(0xffffff));
-//        valikko.add(testaa);
-//        
-//        JButton tulokset = new JButton("Tulokset");
-//        tulokset.setFont(new Font("Rockwell", Font.PLAIN, 20));
-//        tulokset.setBackground(new Color(0xffffdd));
-//        valikko.add(tulokset);
-//        
-//        return valikko;
-//    }
-    
 
     public JFrame getFrame() {
         return frame;
