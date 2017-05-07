@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -27,13 +29,12 @@ import pietnurm.logiikka.Kysymysvarasto;
  * @author pieta
  */
 public class Kategoriavalitsin {
-    private String[] description;
-    private ArrayList<String> kategorianimet;
-    private JTextField t = new JTextField(15);
+    private String[] kategoriaArray;
+    private JTextField valittuKategoria = new JTextField(15);
     private JTextArea uusiKategoria = new JTextArea("");
-    private JComboBox c = new JComboBox();
-    private JButton b = new JButton("Lisää uusi kategoria");
-    private int count = 0;
+    private JComboBox valikko = new JComboBox();
+    private JButton lisaaKategoria = new JButton("Lisää uusi kategoria");
+    private int laskuri = 0;
     private JPanel valitsinpaneeli;
     
 
@@ -42,53 +43,50 @@ public class Kategoriavalitsin {
         kysymysvarasto.haeTallennetutKategoriat();
         ArrayList<Kategoria> kategoriat = new ArrayList<>();
         kategoriat = kysymysvarasto.palautaKategoriat();
-        this.description = new String[kategoriat.size()];
+        this.kategoriaArray = new String[kategoriat.size()];
         for (int i = 0; i < kategoriat.size(); i++) {
-            description[i] = kategoriat.get(i).palautaKategorianNimi();
+            kategoriaArray[i] = kategoriat.get(i).palautaKategorianNimi();
         }
-        b.setBackground(new Color(0xffffdd));
-        c.setBackground(new Color(0xffffff));
-        t.setBackground(new Color(0xffffff));
+        lisaaKategoria.setBackground(new Color(0xffffdd));
+        valikko.setBackground(new Color(0xffffff));
+        valittuKategoria.setBackground(new Color(0xffffff));
         uusiKategoria.setBackground(new Color(0xffffdd));
         
         
         
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < kategoriat.size(); i++)
             
-            c.addItem(description[count++]);
-            t.setEditable(false);
-            b.addActionListener(new ActionListener() {
+            valikko.addItem(kategoriaArray[laskuri++]);
+            valittuKategoria.setEditable(false);
+            lisaaKategoria.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // Tänne lisää kategoria -toiminnallisuus!!
-//                if (count < description.length)
-//                    c.addItem(description[count++]);
+                    try {
+                        Kategoria luotuKategoria = new Kategoria(uusiKategoria.getText());
+                    } catch (IOException ex) {
+                        Logger.getLogger(Kategoriavalitsin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    valikko.addItem(uusiKategoria.getText());
+                    uusiKategoria.setText("");
                 }
         });
-        c.addActionListener(new ActionListener() {
+        valikko.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                t.setText("" + ((JComboBox) e.getSource()).getSelectedItem());
+                valittuKategoria.setText("" + ((JComboBox) e.getSource()).getSelectedItem());
             }
         });
 
         this.valitsinpaneeli = new JPanel(new GridLayout(2, 2));
-        valitsinpaneeli.add(t);
-        valitsinpaneeli.add(c);
+        valitsinpaneeli.add(valittuKategoria);
+        valitsinpaneeli.add(valikko);
         valitsinpaneeli.add(uusiKategoria);
-        valitsinpaneeli.add(b);
-      
-      
-//      Container cp = getContentPane();
-//      cp.setLayout(new FlowLayout());
-//      cp.add(t);
-//      cp.add(c);
-//      cp.add(b);
+        valitsinpaneeli.add(lisaaKategoria);
 
     }
     public JPanel palautaValitsin() {
         return valitsinpaneeli;
     }
     public String palautaKategoria() {
-        return t.getText();
+        return valittuKategoria.getText();
     }
 
 }
