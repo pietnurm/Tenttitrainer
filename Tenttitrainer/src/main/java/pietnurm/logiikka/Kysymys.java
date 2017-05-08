@@ -25,8 +25,8 @@ public class Kysymys {
         this.alakategoria = "";
     }
     /**
-     * Metodi muuttaa kysymyksen sisällön parametrin arvon mukaiseksi.
-     * @param uusiKysymys 
+     * Metodi tallentaa kysymyksen ja mallivastauksen parametrin mukaisen kategorian kysymys- ja mallivastaustiedostoihin.
+     * @param kategoria 
      */
     public void tallennaKysymys(String kategoria) throws IOException {
         String kysymystiedosto = "kysymykset_" + kategoria + ".txt";
@@ -56,12 +56,15 @@ public class Kysymys {
         kysymyskirjoittaja.close();
         mallivastauskirjoittaja.close();
     }
-    
+    /**
+     * Muokkaa kysymystä lokaalisti, mutta ei koske kysymystiedostoon.
+     * @param uusiKysymys 
+     */
     public void muokkaaKysymysta(String uusiKysymys) {
         this.kysymys = uusiKysymys;
     }
     /**
-     * Metodi muokkaa kysymyksen mallivastauksen sisällön parametrin arvon mukaiseksi.
+     * Metodi muokkaa kysymyksen mallivastauksen sisällön parametrin arvon mukaiseksi mutta ei koske mallivastaustiedostoon.
      * @param uusiMallivastaus 
      */
     public void muokkaaMallivastausta(String uusiMallivastaus) {

@@ -39,12 +39,18 @@ public class Kysymysvarasto {
         } catch (FileNotFoundException e) {
         }
     }
-    
+    /**
+     * Lisää kategorian kysymysvaraston kategorialistaan, mutta ei kategorialista-tiedostoon.
+     * @param kategoria 
+     */
     public void lisaaKategoria(Kategoria kategoria) {
         kategoria.haeTallennetutKysymykset();
         this.kaikkiKategoriat.add(kategoria);
     }
-    // TÄMÄ EI POISTA KATEGORIALISTA-TIEDOSTOSTA!
+    /**
+     * Poistaa kategorian kysymysvaraston kategorialistasta, mutta ei kategorialista-tiedostosta.
+     * @param kategoria 
+     */
     public void poistaKategoria(Kategoria kategoria) {
         for (int i = 0; i < kaikkiKategoriat.size(); i++) {
             if (kaikkiKategoriat.get(i).equals(kategoria)) {
@@ -52,9 +58,17 @@ public class Kysymysvarasto {
             }     
         }
     }
+    /**
+     * Palauttaa kategorialistan.
+     * @return 
+     */
     public ArrayList<Kategoria> palautaKategoriat() {
         return this.kaikkiKategoriat;
     }
+    /**
+     * Palauttaa kysymykset kaikista kategorialistan kategorioista.
+     * @return 
+     */
     public ArrayList<Kysymys> palautaKaikkiKysymykset() {
         ArrayList<Kysymys> kaikkiKysymykset = new ArrayList<>();
         for (int i = 0; i < kaikkiKategoriat.size(); i++) {

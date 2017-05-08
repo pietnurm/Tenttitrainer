@@ -11,12 +11,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * Tallentaa ja hakee tiedostoista pistesaldoja ja keskiarvoja ja palauttaa ne luettavassa muodossa.
  * @author pieta
  */
 public class Tulosarkisto {
     
-    
+/**
+ * Hakee tiedostosta kategorian pisteet ja palauttaa sen.
+ * @param kategorianNimi
+ * @return
+ * @throws FileNotFoundException 
+ */    
     public int kategorianPisteet(String kategorianNimi) throws FileNotFoundException {
         int pisteet = 0;
         File pistetiedosto = new File("pisteet_" + kategorianNimi + ".txt");
@@ -29,6 +34,12 @@ public class Tulosarkisto {
         }
         return pisteet;
     }
+/**
+ * Palauttaa kategorian kysymysten määrän.
+ * @param kategorianNimi
+ * @return
+ * @throws FileNotFoundException 
+ */
     public int kysymystenMaara(String kategorianNimi) throws FileNotFoundException {
         int kysymystenMaara = 0;
         File pistetiedosto = new File("pisteet_" + kategorianNimi + ".txt");
@@ -40,13 +51,24 @@ public class Tulosarkisto {
             }
         }
         return kysymystenMaara;
-    } 
+    }
+/**
+ * Palauttaa kategorian keskiarvon.
+ * @param kategorianNimi
+ * @return
+ * @throws FileNotFoundException 
+ */    
     public double kategorianKeskiarvo(String kategorianNimi) throws FileNotFoundException {
         int kategorianPisteet = kategorianPisteet(kategorianNimi);
         int kysymystenMaara = kysymystenMaara(kategorianNimi);
         double keskiarvo = (double) kategorianPisteet / kysymystenMaara;
         return keskiarvo;
     }
+/**
+ * Palauttaa kaikkien vastattujen kysymysten keskiarvon.
+ * @return
+ * @throws FileNotFoundException 
+ */    
     public double kokonaiskeskiarvo() throws FileNotFoundException {
         int kokonaispisteet = 0;
         int kysymystenKokonaismaara = 0;
@@ -59,6 +81,11 @@ public class Tulosarkisto {
         double kokonaiskeskiarvo = (double) kokonaispisteet / kysymystenKokonaismaara;
         return kokonaiskeskiarvo;
     }
+/**
+ * Palauttaa kategorioiden keskiarvot String-arrayna, jota Kayttoliittyman tulososio osaa lukea.
+ * @return
+ * @throws FileNotFoundException 
+ */    
     public Object[][] tulosdata() throws FileNotFoundException {
         ArrayList<String> kategoriat = new ArrayList<>();
         ArrayList<String> keskiarvot = new ArrayList<>();

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Kategorialuokka pitaa sisallaan yhteen kategoriaan kuuluvia kysymyksia.
+ * Kategorialuokka pitaa sisallaan yhteen kategoriaan kuuluvia kysymyksia ja hakee tallennettuja kysymyksiä tiedostoista.
  * @author pieta
  */
 public class Kategoria {
@@ -26,6 +26,12 @@ public class Kategoria {
     private FileWriter mallivastausKirjoittaja;
     private FileWriter kategorialistaKirjoittaja;
     
+    /**
+     * Kun luodaan uusi kategoria, konstruktori lisää sen kategorialista-tiedostoon 
+     * ja luo sitä varten kysymys- ja mallivastaustiedostot, jos samannimistä kategoriaa ei ole olemassa.
+     * @param nimi
+     * @throws IOException 
+     */
     public Kategoria(String nimi) throws IOException {
         this.nimi = nimi;
         this.kysymykset = new ArrayList();

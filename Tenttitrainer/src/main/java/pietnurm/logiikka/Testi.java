@@ -157,6 +157,10 @@ public class Testi {
         }
         tallennaArvostelu(arvostelu, arvosteltavaKategoria);
     }
+/**
+ * Palauttaa tentin pistesaldon.
+ * @return 
+ */    
     public int palautaPistesaldo() {
         return this.pistesaldo;
     }
@@ -172,6 +176,12 @@ public class Testi {
             return keskiarvo;
         } 
     }
+    /**
+     * Tallentaa arvostelun pistetiedostoon parametrin määrittelemään kategoriaan.
+     * @param arvostelu
+     * @param kategoria
+     * @throws IOException 
+     */
     public void tallennaArvostelu(int arvostelu, String kategoria) throws IOException {
         String tiedostonimi = "pisteet_" + kategoria + ".txt";
         File kategorianPisteet = new File(tiedostonimi);
