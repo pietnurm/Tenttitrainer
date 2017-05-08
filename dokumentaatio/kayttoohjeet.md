@@ -1,0 +1,8 @@
+﻿# Käyttöohjeet
+Tenttitrainerilla voit luoda kysymyksiä eri kategorioista ja testata sen jälkeen tietojasi näistä aiheista!
+## Luo kysymyksiä
+Täällä voit luoda ja tallentaa uusia kysymyksiä, mallivastauksia ja kategorioita. Kirjoita haluamasi kysymys ja sen mallivastaus niille varattuihin kenttiin ja valitse listasta sopiva kategoria. Kysymys ei tallennu, jos kysymys-, mallivastaus-, tai kategoriakenttä on tyhjä. Samaa kysymystä ei voi tallentaa samaan kategoriaan kahteen kertaan (ohjelma tulostaa "Kysymys tallennettu"). Listaan on esitallennettu joitain testikategorioita. Jos haluat luoda uuden kategorian, syötä nimi sille varattuun kenttään ja klikkaa "Lisää uusi kategoria". (Valitettavasti kategorialista ei vielä päivity ilman ohjelman restarttia.)
+## Testaa itseäsi
+Täällä voit tentata ohjelmaan tallennettuja kysymyksiä. Voit valita, tenttaako ohjelma kaikkia siihen tallennettuja kysymyksiä vai kysymyksiä valitsemastasi kategoriasta. Tenttinäkymässä ohjelma tulostaa kysymyksen. Kirjoita vastaus sille annettuun kenttään ja klikkaa "Tarkista vastaus". Ohjelma tulostaa kysymyksen, oikean mallivastauksen ja sinun vastauksesi. Pisteytä vastauksesi ruudun alareunan arvostelu-sliderillä ja siirry seuraavaan kysymykseen. Tentti kestää niin kauan kuin kysymyksiä riittää, mutta voit halutessasi päättää tentin milloin tahansa. Tentin päättyessä saat nähdä vastaustesi keskiarvon. (Tunnettu bugi: tentin ensimmäinen kysymys saattaa olla väärästä kategoriasta, eikä sen mallivastaus välttämättä täsmää kysyttyyn kysymykseen).
+## Tulokset
+Täältä voit tarkistaa kategoriakohtaisesti vastattujen kysymysten määrän ja keskiarvon. Näet myös kaikkien vastausten kokonaiskeskiarvon.
