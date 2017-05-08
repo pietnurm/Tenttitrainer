@@ -29,7 +29,6 @@ import pietnurm.logiikka.Testi;
  * @author pieta
  */
 public class Tenttinakyma {
-//    private JPanel kayttoliittymaLayout;
     private Kayttoliittyma kayttoliittyma;
     private Kysymysvarasto kysymysvarasto;
     private Testi tenttaa;
@@ -51,7 +50,11 @@ public class Tenttinakyma {
         tenttaa.luoKysymyslista();
 
     }
-    
+    /**
+     * Palauttaa tenttinakyman JPanelina.
+     * @return
+     * @throws IOException 
+     */
     public JPanel luo() throws IOException {
         luoKomponentit();
         
@@ -63,6 +66,10 @@ public class Tenttinakyma {
         
         return cards;
     }
+    /**
+     * Luo tenttinakyman komponentit.
+     * @throws IOException 
+     */
     public void luoKomponentit() throws IOException {
         this.tenttivalikko = new JPanel(new GridLayout(5, 1));
         

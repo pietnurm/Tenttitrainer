@@ -39,14 +39,22 @@ public class Kysymyseditori {
         kysymysvarasto.haeTallennetutKategoriat();
         
     }
-    
+    /**
+     * Palauttaa kysymyseditorin JPanelina.
+     * @return
+     * @throws IOException 
+     */
     public JPanel luo() throws IOException {
         luoKomponentit();
         this.cards = new JPanel(new CardLayout());
         cards.add(kysymyseditori, KYSYMYSEDITORI);
         
         return cards;
-    }    
+    }
+/**
+ * Luo kysymyseditorin komponentit.
+ * @throws IOException 
+ */    
     public void luoKomponentit() throws IOException {    
         this.kysymyseditori = new JPanel(new GridLayout(5, 1));
         

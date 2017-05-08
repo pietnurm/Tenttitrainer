@@ -59,7 +59,10 @@ public class Kayttoliittyma implements Runnable {
         frame.pack();
         frame.setVisible(true);
     }
-
+/**
+ * Luo käyttöliittymän komponentit.
+ * @throws IOException 
+ */
     public void luoKomponentit() throws IOException {       
         // luo paavalikon
         JPanel valikko = new JPanel(new GridLayout(5, 1));
@@ -195,6 +198,9 @@ public class Kayttoliittyma implements Runnable {
     public JFrame getFrame() {
         return frame;
     }
+    /**
+     * Metodi käyttöliittymäikkunan sulkemiseen (turha).
+     */
     public void suljeIkkuna() {
         frame.dispose();
     }

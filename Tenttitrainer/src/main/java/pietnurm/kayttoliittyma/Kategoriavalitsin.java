@@ -22,7 +22,7 @@ import pietnurm.logiikka.Kategoria;
 import pietnurm.logiikka.Kysymysvarasto;
 
 /**
- *
+ * Luokka kategorianvalitsemis-dropdown-valikkojen luomiseen.
  * @author pieta
  */
 public class Kategoriavalitsin {
@@ -34,7 +34,10 @@ public class Kategoriavalitsin {
     private int laskuri = 0;
     private JPanel valitsinpaneeli;
     
-
+/**
+ * Luo kategoriavalitsimen komponentit Kysymyseditori-luokkaa varten
+ * @throws IOException 
+ */
     public void init() throws IOException {
         Kysymysvarasto kysymysvarasto = new Kysymysvarasto();
         kysymysvarasto.haeTallennetutKategoriat();
@@ -78,7 +81,9 @@ public class Kategoriavalitsin {
         valitsinpaneeli.add(uusiKategoria);
         valitsinpaneeli.add(lisaaKategoria);
         
-
+/**
+ * Luo kategoriavalitsimen komponentit Tenttinakyma-luokan "testaa kategoriaa" -toimintoa varten.
+ */
     }
     public void initPelkistetty() throws IOException {
         Kysymysvarasto kysymysvarasto = new Kysymysvarasto();
@@ -122,11 +127,17 @@ public class Kategoriavalitsin {
         valitsinpaneeli.add(valikko);    
 
     }
-    
+/**
+ * Palauttaa kategoriavalitsimen JPanelina.
+ * @return 
+ */    
     public JPanel palautaValitsin() {
         return valitsinpaneeli;
     }
-
+/**
+ * Palauttaa valittuKategoria-tekstikentän mukaisen valitun kategorian nimen.
+ * @return 
+ */
     public String palautaKategoria() {
         return valittuKategoria.getText();
     }
